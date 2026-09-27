@@ -226,6 +226,16 @@ footer a{color:inherit}
 .markets.big .tag{font-size:.85rem;padding:7px 11px;background:var(--accent);color:var(--accent-ink)}
 @media (max-width:860px){.co-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:480px){.co-grid{grid-template-columns:1fr}.co-wide{grid-column:auto}}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;align-items:start}
+.about-text{display:grid;gap:12px;max-width:62ch}
+.about-text p{margin:0;color:var(--muted)}
+.factory{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.factory figure{margin:0;border-radius:8px;overflow:hidden;background:var(--steel);border:1px solid var(--line)}
+.factory .f-big{grid-column:1/-1}
+.factory img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.factory .f-big img{aspect-ratio:16/9}
+.factory figcaption{font:500 .74rem/1.3 var(--mono);color:var(--muted);padding:8px 10px}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
 .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 20px rgb(0 0 0 / .2);border-radius:999px;padding:13px 18px}
 </style>
 </head>
@@ -363,6 +373,17 @@ footer a{color:inherit}
   <div class="wrap">
     <p class="eyebrow" data-i18n="navCompany"></p>
     <h2 data-i18n="coTitle"></h2>
+    <div class="about">
+      <div class="about-text">
+        <h3 data-i18n="abTitle"></h3>
+        <div data-i18n="abText"></div>
+      </div>
+      <div class="factory">
+        <figure class="f-big"><img src="https://im01.itaiwantrade.com/b62d8740-1e07-4366-9896-a042342ddd01/402626-369x244.jpg" data-i18n-alt="fac2" alt="" loading="lazy"><figcaption data-i18n="fac2"></figcaption></figure>
+        <figure><img src="https://im01.itaiwantrade.com/9328be2f-49d5-4539-a13a-547a3a58ffe3/1003-369x244.jpg" data-i18n-alt="fac1" alt="" loading="lazy"><figcaption data-i18n="fac1"></figcaption></figure>
+        <figure><img src="https://im01.itaiwantrade.com/007145fe-37b5-415d-b5eb-a2a36b355d27/402624-369x244.jpg" data-i18n-alt="fac3" alt="" loading="lazy"><figcaption data-i18n="fac3"></figcaption></figure>
+      </div>
+    </div>
     <div class="co-grid">
       <div class="co-card co-wide co-hi">
         <span class="co-k" data-i18n="coExport"></span>
@@ -378,7 +399,6 @@ footer a{color:inherit}
       <div class="co-card"><span class="co-k" data-i18n="coFounded"></span><b class="co-v">1986</b></div>
       <div class="co-card"><span class="co-k" data-i18n="coStaff"></span><b class="co-v" data-i18n="coStaffV"></b></div>
       <div class="co-card"><span class="co-k" data-i18n="coSupport"></span><b class="co-v">Español · 中文 · English</b></div>
-      <div class="co-card co-wide"><span class="co-k" data-i18n="coAbout"></span><p class="co-note" data-i18n="coSinceP"></p></div>
       <div class="co-card co-wide"><span class="co-k" data-i18n="coCert"></span><p class="co-note" data-i18n="coCertP"></p></div>
     </div>
   </div>
@@ -393,6 +413,8 @@ footer a{color:inherit}
         <div class="channel"><div><b data-i18n="ctChat"></b><span>+886 <span class="todo" data-i18n="todoNumber"></span></span></div><a class="btn btn-wa" href="#contacto" data-i18n="ctWrite"></a></div>
         <div class="channel"><div><b data-i18n="ctMail"></b><span><span class="todo">sales@…</span></span></div></div>
         <div class="channel"><div><b>Taiwantrade</b><span>tingjin.taiwantrade.com</span></div><a class="btn btn-ghost" href="https://tingjin.es.taiwantrade.com/" target="_blank" rel="noopener" data-i18n="ctStore"></a></div>
+        <div class="channel"><div><b data-i18n="ctPhone"></b><span>+886-4-2566-1478</span></div></div>
+        <div class="channel"><div><b data-i18n="ctAddr"></b><span data-i18n="ctAddrV"></span></div></div>
         <div class="channel"><div><b data-i18n="ctHours"></b><span data-i18n="ctHoursV"></span></div></div>
       </div>
       <form id="quote">
@@ -440,6 +462,7 @@ footer a{color:inherit}
 <script>
 const T={
 es:{
+ abTitle:'Sobre nosotros',abText:'<p>Desde 1986, Ting Jin fabrica en Taichung (Taiwán) electrodomésticos de acero inoxidable: campanas extractoras, estufas y calentadores de agua.</p><p>Con 40 años de experiencia y un equipo propio de ingenieros, producimos tanto modelos estándar como diseños personalizados, y fabricamos con la marca del cliente incluso en pequeñas cantidades.</p><p>Además del mercado taiwanés, exportamos a Latinoamérica, Estados Unidos, Hong Kong y Tailandia. Para nosotros la cocina es el centro de una vida sana, por eso seguimos mejorando el diseño y el control de calidad de cada producto.</p>',fac1:'Planta de Ting Jin en Daya, Taichung',fac2:'Línea de montaje y embalaje',fac3:'Almacén de campanas terminadas',ctPhone:'Teléfono',ctAddr:'Dirección',ctAddrV:'23 Wen Shiu Rd., Daya, Taichung, Taiwán',ctHoursV:'Lun–Vie 8:00–17:00 (hora de Taiwán, GMT+8)',
  coExport:'Principales mercados de exportación',coMarkets:'<span class="tag">República Dominicana</span><span class="tag">Panamá</span><span class="tag">Paraguay</span>',coMarketsAlso:'También han vendido en Estados Unidos, Centroamérica, Hong Kong y Tailandia.',coStar:'Producto estrella',coStarV:'Campanas extractoras de acero inoxidable, domésticas e industriales',coMain:'Productos principales: campanas extractoras, estufas de gas, calentadores de agua a gas y ventiladores centrífugos.',coType:'Tipo de negocio',coTypeV:'Fabricante · OEM · ODM',coFounded:'Fundación',coStaff:'Empleados',coStaffV:'Menos de 50',coSupport:'Atención al cliente',coAbout:'Sobre la empresa',
  propBubbleHead:'Para Ting Jin',propBubble:'Le preparé una propuesta para mejorar su página. Ábrala aquí →',propBubbleClose:'Cerrar aviso',
  propTab:'Propuesta de Emi 李亞諾',propTitle:'Propuesta de mejora',propClose:'Cerrar',propSlot:'<p class="demo">Esta página es una <b>demo</b> hecha con la información que hoy tienen en Taiwantrade. Textos, fotos, colores y secciones se pueden ajustar y mejorar.</p><div class="item"><h3>Varios idiomas <span class="plan">Plan básico</span></h3><p>La demo ya está en chino, inglés y español. Se pueden añadir los idiomas de sus mercados, por ejemplo japonés, vietnamita, tailandés, portugués o árabe.</p></div><div class="item"><h3>SEO para atraer compradores <span class="plan">Plan básico</span></h3><p>Preparar la web para que aparezca en Google cuando un importador busca exactamente lo que ustedes fabrican:</p><ul><li>"fabricante campana extractora acero inoxidable Taiwán"</li><li>"commercial range hood manufacturer OEM"</li><li>"不鏽鋼排油煙機 工廠"</li></ul><p>Cada producto con su propia página, título, descripción y datos técnicos en cada idioma.</p></div><div class="item"><h3>Dominio y hosting <span class="plan">Plan básico</span></h3><p>Le ayudo a elegir y contratar un dominio y un hosting buenos y a buen precio. El coste del dominio y del hosting no está incluido: lo paga usted directamente al proveedor.</p><ul><li><b>Dominio:</b> la dirección de su web, por ejemplo tingjin.com.tw. Se renueva cada año.</li><li><b>Hosting:</b> el servidor donde "vive" la página para que esté abierta las 24 horas. Es como alquilar el local de la tienda.</li></ul></div><div class="item"><h3>Sistema para gestionar sus productos <span class="plan plus">Ampliación</span></h3><p>Un panel sencillo para agregar, modificar o quitar productos, fotos y fichas técnicas sin depender de un programador. Con cuentas para tres tipos de usuario:</p><div class="roles"><div class="role"><b>Administradores</b><span>Ustedes. Editan productos, precios, fotos y textos, y ven las solicitudes que llegan.</span></div><div class="role"><b>Clientes</b><span>Distribuidores actuales. Entran con su cuenta, ven precios, catálogo completo y sus pedidos o presupuestos.</span></div><div class="role"><b>Posibles clientes</b><span>Se registran para descargar el catálogo o pedir presupuesto. Así ustedes reúnen una lista de contactos interesados.</span></div></div></div><div class="item"><h3>A su medida</h3><p>Puede buscar otras páginas web que le gusten, de su sector o de cualquier otro, y enviarme las funciones o ideas que quiera tener: un buscador de productos, un comparador de modelos, un video de la fábrica, un chat… Las adaptamos a su página.</p></div><p class="end">Con gusto le explico cada punto y le preparo un presupuesto. — Emi 李亞諾</p>',
@@ -480,13 +503,14 @@ es:{
  coTitle:'Cuatro décadas en acero inoxidable',coSince:'Desde 1986',
  coSinceP:'Fabricante, OEM y ODM. Equipo propio de ingenieros para modelos estándar y diseños personalizados.',
  coCert:'Certificaciones',coCertP:'D-U-N-S® · Proveedor e-Portal Taiwantrade · <span class="todo">añadir normas de gas, CE, ISO</span>',
- ctTitle:'Pida presupuesto: le atendemos en español, chino e inglés',ctChat:'WhatsApp',ctWrite:'Escribir',ctMail:'Correo',ctStore:'Ver tienda',ctHours:'Horario',ctHoursV:'Lun–Vie 9:00–18:00 (hora de Taiwán, GMT+8)',
+ ctTitle:'Pida presupuesto: le atendemos en español, chino e inglés',ctChat:'WhatsApp',ctWrite:'Escribir',ctMail:'Correo',ctStore:'Ver tienda',ctHours:'Horario',
  fName:'Nombre',fCompany:'Empresa',fCountry:'País',fQty:'Cantidad aproximada',fProduct:'Producto de interés',fMsg:'Mensaje',fSend:'Enviar solicitud',
  fOptions:'<option>Campanas domésticas</option><option>Campanas industriales</option><option>Estufas</option><option>Calentadores de agua</option><option>OEM / marca propia</option>',
  fDemo:'Formulario de demostración: en la web real esta solicitud llegaría al correo de ventas.',
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986',foot2:'Maqueta de propuesta, 2026'
 },
 en:{
+ abTitle:'About us',abText:'<p>Since 1986, Ting Jin has manufactured stainless steel kitchen appliances in Taichung, Taiwan: range hoods, gas stoves and water heaters.</p><p>With 40 years of experience and our own engineering team, we make both standard models and custom designs, and we produce under the customer’s brand even in small quantities.</p><p>Besides the Taiwanese market, we export to Latin America, the United States, Hong Kong and Thailand. We see the kitchen as the heart of a healthy life, so we keep improving the design and quality control of every product.</p>',fac1:'Ting Jin plant in Daya, Taichung',fac2:'Assembly and packing line',fac3:'Finished range hood warehouse',ctPhone:'Phone',ctAddr:'Address',ctAddrV:'23 Wen Shiu Rd., Daya, Taichung, Taiwan',ctHoursV:'Mon–Fri 8:00–17:00 (Taiwan time, GMT+8)',
  coExport:'Main export markets',coMarkets:'<span class="tag">Dominican Republic</span><span class="tag">Panama</span><span class="tag">Paraguay</span>',coMarketsAlso:'Also sold in the United States, Central America, Hong Kong and Thailand.',coStar:'Flagship product',coStarV:'Stainless steel range hoods, household and commercial',coMain:'Main products: range hoods, gas stoves, gas water heaters and centrifugal fans.',coType:'Business type',coTypeV:'Manufacturer · OEM · ODM',coFounded:'Founded',coStaff:'Employees',coStaffV:'Under 50',coSupport:'Customer service',coAbout:'About us',
  propBubbleHead:'For Ting Jin',propBubble:'I prepared a proposal to improve your page. Open it here →',propBubbleClose:'Dismiss',
  propTab:'Proposal by Emi 李亞諾',propTitle:'Improvement proposal',propClose:'Close',propSlot:'<p class="demo">This page is a <b>demo</b> built with the information you currently have on Taiwantrade. Text, photos, colors and sections can all be adjusted and improved.</p><div class="item"><h3>Multiple languages <span class="plan">Basic plan</span></h3><p>The demo is already in Chinese, English and Spanish. We can add the languages of your markets, such as Japanese, Vietnamese, Thai, Portuguese or Arabic.</p></div><div class="item"><h3>SEO to attract buyers <span class="plan">Basic plan</span></h3><p>Set up the site so it shows on Google when an importer searches for exactly what you make:</p><ul><li>"stainless steel range hood manufacturer Taiwan"</li><li>"commercial range hood OEM"</li><li>"fabricante campana extractora acero inoxidable"</li></ul><p>Every product gets its own page, title, description and specifications in each language.</p></div><div class="item"><h3>Domain and hosting <span class="plan">Basic plan</span></h3><p>I help you choose and set up a good, affordable domain and hosting. The cost of the domain and hosting is not included: you pay the provider directly.</p><ul><li><b>Domain:</b> your website’s address, for example tingjin.com.tw. It renews every year.</li><li><b>Hosting:</b> the server where the site “lives” so it is online 24 hours a day. Like renting the space for a shop.</li></ul></div><div class="item"><h3>Product management system <span class="plan plus">Add-on</span></h3><p>A simple dashboard to add, edit or remove products, photos and spec sheets without needing a developer. With accounts for three kinds of users:</p><div class="roles"><div class="role"><b>Administrators</b><span>Your team. Edit products, prices, photos and text, and see incoming inquiries.</span></div><div class="role"><b>Customers</b><span>Current distributors. They log in to see prices, the full catalog and their orders or quotes.</span></div><div class="role"><b>Prospects</b><span>They sign up to download the catalog or request a quote, so you build a list of interested buyers.</span></div></div></div><div class="item"><h3>Tailored to you</h3><p>Feel free to browse other websites you like, in your industry or any other, and send me the features or ideas you would like to have: a product search, a model comparison, a factory video, a chat… We adapt them to your site.</p></div><p class="end">I’d be happy to walk you through each point and prepare a quote. — Emi 李亞諾</p>',
@@ -527,13 +551,14 @@ en:{
  coTitle:'Four decades of stainless steel',coSince:'Since 1986',
  coSinceP:'Manufacturer, OEM and ODM. In-house engineers for standard and custom designs.',
  coCert:'Certifications',coCertP:'D-U-N-S® · Taiwantrade e-Portal supplier · <span class="todo">add gas standards, CE, ISO</span>',
- ctTitle:'Request a quote. We reply in English, Spanish and Chinese',ctChat:'WhatsApp',ctWrite:'Message us',ctMail:'Email',ctStore:'Visit store',ctHours:'Office hours',ctHoursV:'Mon–Fri 9:00–18:00 (Taiwan time, GMT+8)',
+ ctTitle:'Request a quote. We reply in English, Spanish and Chinese',ctChat:'WhatsApp',ctWrite:'Message us',ctMail:'Email',ctStore:'Visit store',ctHours:'Office hours',
  fName:'Name',fCompany:'Company',fCountry:'Country',fQty:'Approx. quantity',fProduct:'Product of interest',fMsg:'Message',fSend:'Send request',
  fOptions:'<option>Household range hoods</option><option>Commercial range hoods</option><option>Stoves</option><option>Water heaters</option><option>OEM / private label</option>',
  fDemo:'Demo form: on the real site this request would go to the sales inbox.',
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwan · since 1986',foot2:'Proposal mockup, 2026'
 },
 zh:{
+ abTitle:'關於我們',abText:'<p>Ting Jin 自 1986 年起於台中生產不鏽鋼廚房家電，包括排油煙機、瓦斯爐及熱水器。</p><p>憑藉 40 年製造經驗與自有工程團隊，我們提供標準款及客製化設計，並接受小量客戶自有品牌代工。</p><p>除台灣市場外，產品亦外銷至拉丁美洲、美國、香港及泰國。我們相信廚房是健康生活的核心，因此持續改良每項產品的設計與品質管控。</p>',fac1:'台中大雅廠區',fac2:'組裝及包裝產線',fac3:'排油煙機成品倉庫',ctPhone:'電話',ctAddr:'地址',ctAddrV:'台中市大雅區 23 Wen Shiu Rd.',ctHoursV:'週一至週五 8:00–17:00（台灣時間 GMT+8）',
  coExport:'主要外銷市場',coMarkets:'<span class="tag">多明尼加</span><span class="tag">巴拿馬</span><span class="tag">巴拉圭</span>',coMarketsAlso:'另曾銷往美國、中美洲、香港及泰國。',coStar:'主力產品',coStarV:'家用及營業用不鏽鋼排油煙機',coMain:'主要產品：排油煙機、瓦斯爐、瓦斯熱水器及離心式風機。',coType:'營業類型',coTypeV:'製造商 · OEM · ODM',coFounded:'創立年份',coStaff:'員工人數',coStaffV:'50 人以下',coSupport:'客戶服務',coAbout:'公司簡介',
  propBubbleHead:'給 Ting Jin',propBubble:'我為貴公司準備了網站改版提案，請點此查看 →',propBubbleClose:'關閉提示',
  propTab:'李亞諾 Emi 提案',propTitle:'改版提案',propClose:'關閉',propSlot:'<p class="demo">本頁為<b>示範版</b>，內容取自貴公司目前在台灣經貿網上的資料。文字、照片、顏色及版面都可以再調整、優化。</p><div class="item"><h3>多國語言 <span class="plan">基本方案</span></h3><p>示範版已提供中文、英文及西班牙文，也可依貴公司的外銷市場加入日文、越南文、泰文、葡萄牙文或阿拉伯文等語言。</p></div><div class="item"><h3>SEO 搜尋優化，吸引買家 <span class="plan">基本方案</span></h3><p>讓進口商在 Google 搜尋貴公司產品時，就能找到您的網站，例如：</p><ul><li>「不鏽鋼排油煙機 工廠」</li><li>"stainless steel range hood manufacturer Taiwan"</li><li>"fabricante campana extractora acero inoxidable"</li></ul><p>每項產品都有獨立頁面、標題、說明及各語言的規格資料。</p></div><div class="item"><h3>網域與主機 <span class="plan">基本方案</span></h3><p>協助您挑選並申請價格實惠、品質可靠的網域與主機。網域及主機費用不包含在方案內，由貴公司直接支付給服務商。</p><ul><li><b>網域：</b>網站的網址，例如 tingjin.com.tw，每年續約一次。</li><li><b>主機：</b>存放網站的伺服器，讓網站 24 小時都能瀏覽，就像租用店面一樣。</li></ul></div><div class="item"><h3>產品管理系統 <span class="plan plus">加值功能</span></h3><p>簡單易用的後台，不需工程師即可自行新增、修改或下架產品、照片及規格表。並提供三種帳號：</p><div class="roles"><div class="role"><b>管理員</b><span>貴公司人員，可編輯產品、價格、照片及文字，並查看收到的詢價。</span></div><div class="role"><b>客戶</b><span>現有經銷商，登入後可查看價格、完整型錄及訂單或報價紀錄。</span></div><div class="role"><b>潛在客戶</b><span>註冊後即可下載型錄或詢價，貴公司也能累積有興趣的買家名單。</span></div></div></div><div class="item"><h3>依您需求量身打造</h3><p>您可以參考任何喜歡的網站，不論是同業或其他產業，把想要的功能或想法傳給我，例如產品搜尋、型號比較、工廠影片、線上客服等，我們都能依貴公司網站調整加入。</p></div><p class="end">歡迎與我聯繫，我很樂意為您說明細節並提供報價。— 李亞諾 Emi</p>',
@@ -574,7 +599,7 @@ zh:{
  coTitle:'四十年不鏽鋼製造經驗',coSince:'1986 年創立',
  coSinceP:'製造商，提供 OEM 與 ODM 服務。自有工程團隊，可開發標準款及客製設計。',
  coCert:'認證',coCertP:'D-U-N-S® · 台灣經貿網 e-Portal 廠商 · <span class="todo">補上瓦斯器具標準、CE、ISO</span>',
- ctTitle:'歡迎詢價，我們以中文、英文及西班牙文回覆',ctChat:'LINE／WhatsApp',ctWrite:'傳訊息',ctMail:'電子郵件',ctStore:'前往商店',ctHours:'營業時間',ctHoursV:'週一至週五 9:00–18:00（台灣時間 GMT+8）',
+ ctTitle:'歡迎詢價，我們以中文、英文及西班牙文回覆',ctChat:'LINE／WhatsApp',ctWrite:'傳訊息',ctMail:'電子郵件',ctStore:'前往商店',ctHours:'營業時間',
  fName:'姓名',fCompany:'公司',fCountry:'國家',fQty:'預估數量',fProduct:'詢問產品',fMsg:'留言',fSend:'送出詢價',
  fOptions:'<option>家用排油煙機</option><option>營業用排油煙機</option><option>瓦斯爐</option><option>熱水器</option><option>OEM 自有品牌</option>',
  fDemo:'示範表單：正式網站上，此詢價會寄至業務信箱。',

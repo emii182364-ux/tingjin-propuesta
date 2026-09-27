@@ -175,7 +175,19 @@ footer a{color:inherit}
 .prop-panel .by{font:500 .8rem var(--mono);color:var(--flame);letter-spacing:.06em;text-transform:uppercase}
 .prop-panel h2{font-size:1.8rem}
 .prop-panel .close{justify-self:end;background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 12px;font:inherit;cursor:pointer}
-.prop-slot{border:2px dashed var(--line);border-radius:10px;padding:20px;color:var(--muted);font-size:.95rem}
+.prop-slot{display:grid;gap:16px;font-size:.95rem;line-height:1.55}
+.prop-slot p{margin:0;color:var(--muted)}
+.prop-slot .demo{background:var(--note);color:var(--note-ink);border-radius:8px;padding:12px 14px}
+.prop-slot h3{font-size:1.05rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.prop-slot .plan{font:600 .68rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:var(--accent);color:var(--accent-ink)}
+.prop-slot .plan.plus{background:var(--flame);color:#fff}
+.prop-slot ul{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:4px}
+.prop-slot .item{display:grid;gap:6px;padding-top:14px;border-top:1px solid var(--line)}
+.prop-slot .roles{display:grid;gap:8px}
+.prop-slot .role{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.prop-slot .role b{display:block;font-size:.9rem}
+.prop-slot .role span{color:var(--muted);font-size:.87rem}
+.prop-slot .end{font-weight:600;color:var(--ink)}
 .prop-scrim{position:fixed;inset:0;z-index:35;background:rgb(0 0 0 / .35)}
 @media (max-width:760px){.prop-tab{top:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:none;font-size:.8rem;padding:12px 8px}}
 .prop-tab.nudge{animation:tabNudge 4s ease-in-out infinite}
@@ -406,7 +418,7 @@ footer a{color:inherit}
 const T={
 es:{
  propBubbleHead:'Para Ting Jin',propBubble:'Le preparé una propuesta para mejorar su página. Ábrala aquí →',propBubbleClose:'Cerrar aviso',
- propTab:'Propuesta de Emi 李亞諾',propTitle:'Propuesta de mejora',propClose:'Cerrar',propSlot:'Aquí irá la propuesta de Emi para Ting Jin Kitchenware.',
+ propTab:'Propuesta de Emi 李亞諾',propTitle:'Propuesta de mejora',propClose:'Cerrar',propSlot:'<p class="demo">Esta página es una <b>demo</b> hecha con la información que hoy tienen en Taiwantrade. Textos, fotos, colores y secciones se pueden ajustar y mejorar.</p><div class="item"><h3>Varios idiomas <span class="plan">Plan básico</span></h3><p>La demo ya está en chino, inglés y español. Se pueden añadir los idiomas de sus mercados, por ejemplo japonés, vietnamita, tailandés, portugués o árabe.</p></div><div class="item"><h3>SEO para atraer compradores <span class="plan">Plan básico</span></h3><p>Preparar la web para que aparezca en Google cuando un importador busca exactamente lo que ustedes fabrican:</p><ul><li>"fabricante campana extractora acero inoxidable Taiwán"</li><li>"commercial range hood manufacturer OEM"</li><li>"不鏽鋼排油煙機 工廠"</li></ul><p>Cada producto con su propia página, título, descripción y datos técnicos en cada idioma.</p></div><div class="item"><h3>Sistema para gestionar sus productos <span class="plan plus">Ampliación</span></h3><p>Un panel sencillo para agregar, modificar o quitar productos, fotos y fichas técnicas sin depender de un programador. Con cuentas para tres tipos de usuario:</p><div class="roles"><div class="role"><b>Administradores</b><span>Ustedes. Editan productos, precios, fotos y textos, y ven las solicitudes que llegan.</span></div><div class="role"><b>Clientes</b><span>Distribuidores actuales. Entran con su cuenta, ven precios, catálogo completo y sus pedidos o presupuestos.</span></div><div class="role"><b>Posibles clientes</b><span>Se registran para descargar el catálogo o pedir presupuesto. Así ustedes reúnen una lista de contactos interesados.</span></div></div></div><p class="end">Con gusto le explico cada punto y le preparo un presupuesto. — Emi 李亞諾</p>',
  hero1:'Imagen ilustrativa (Rizky Nuriman / Unsplash). Sustituir por una foto de su fábrica.',hero1alt:'Soldadura TIG de lámina de acero inoxidable',hero2:'Campana de pared 90 cm · LED',hero3:'Estufa de gas empotrable',
  notice:'Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.',
  brandSub:'KITCHENWARE · DESDE 1986',
@@ -454,7 +466,7 @@ es:{
 },
 en:{
  propBubbleHead:'For Ting Jin',propBubble:'I prepared a proposal to improve your page. Open it here →',propBubbleClose:'Dismiss',
- propTab:'Proposal by Emi 李亞諾',propTitle:'Improvement proposal',propClose:'Close',propSlot:'Emi’s proposal for Ting Jin Kitchenware will go here.',
+ propTab:'Proposal by Emi 李亞諾',propTitle:'Improvement proposal',propClose:'Close',propSlot:'<p class="demo">This page is a <b>demo</b> built with the information you currently have on Taiwantrade. Text, photos, colors and sections can all be adjusted and improved.</p><div class="item"><h3>Multiple languages <span class="plan">Basic plan</span></h3><p>The demo is already in Chinese, English and Spanish. We can add the languages of your markets, such as Japanese, Vietnamese, Thai, Portuguese or Arabic.</p></div><div class="item"><h3>SEO to attract buyers <span class="plan">Basic plan</span></h3><p>Set up the site so it shows on Google when an importer searches for exactly what you make:</p><ul><li>"stainless steel range hood manufacturer Taiwan"</li><li>"commercial range hood OEM"</li><li>"fabricante campana extractora acero inoxidable"</li></ul><p>Every product gets its own page, title, description and specifications in each language.</p></div><div class="item"><h3>Product management system <span class="plan plus">Add-on</span></h3><p>A simple dashboard to add, edit or remove products, photos and spec sheets without needing a developer. With accounts for three kinds of users:</p><div class="roles"><div class="role"><b>Administrators</b><span>Your team. Edit products, prices, photos and text, and see incoming inquiries.</span></div><div class="role"><b>Customers</b><span>Current distributors. They log in to see prices, the full catalog and their orders or quotes.</span></div><div class="role"><b>Prospects</b><span>They sign up to download the catalog or request a quote, so you build a list of interested buyers.</span></div></div></div><p class="end">I’d be happy to walk you through each point and prepare a quote. — Emi 李亞諾</p>',
  hero1:'Illustrative photo (Rizky Nuriman / Unsplash). Replace with a photo of your factory.',hero1alt:'TIG welding of stainless steel sheet',hero2:'90 cm wall hood · LED',hero3:'Built-in gas stove',
  notice:'Proposal mockup for Ting Jin Kitchenware. This is not the official website. Photos come from the current Taiwantrade store. Items highlighted in yellow must be filled in by the company.',
  brandSub:'KITCHENWARE · SINCE 1986',
@@ -502,7 +514,7 @@ en:{
 },
 zh:{
  propBubbleHead:'給 Ting Jin',propBubble:'我為貴公司準備了網站改版提案，請點此查看 →',propBubbleClose:'關閉提示',
- propTab:'李亞諾 Emi 提案',propTitle:'改版提案',propClose:'關閉',propSlot:'此處將放上李亞諾（Emi）為 Ting Jin Kitchenware 準備的提案內容。',
+ propTab:'李亞諾 Emi 提案',propTitle:'改版提案',propClose:'關閉',propSlot:'<p class="demo">本頁為<b>示範版</b>，內容取自貴公司目前在台灣經貿網上的資料。文字、照片、顏色及版面都可以再調整、優化。</p><div class="item"><h3>多國語言 <span class="plan">基本方案</span></h3><p>示範版已提供中文、英文及西班牙文，也可依貴公司的外銷市場加入日文、越南文、泰文、葡萄牙文或阿拉伯文等語言。</p></div><div class="item"><h3>SEO 搜尋優化，吸引買家 <span class="plan">基本方案</span></h3><p>讓進口商在 Google 搜尋貴公司產品時，就能找到您的網站，例如：</p><ul><li>「不鏽鋼排油煙機 工廠」</li><li>"stainless steel range hood manufacturer Taiwan"</li><li>"fabricante campana extractora acero inoxidable"</li></ul><p>每項產品都有獨立頁面、標題、說明及各語言的規格資料。</p></div><div class="item"><h3>產品管理系統 <span class="plan plus">加值功能</span></h3><p>簡單易用的後台，不需工程師即可自行新增、修改或下架產品、照片及規格表。並提供三種帳號：</p><div class="roles"><div class="role"><b>管理員</b><span>貴公司人員，可編輯產品、價格、照片及文字，並查看收到的詢價。</span></div><div class="role"><b>客戶</b><span>現有經銷商，登入後可查看價格、完整型錄及訂單或報價紀錄。</span></div><div class="role"><b>潛在客戶</b><span>註冊後即可下載型錄或詢價，貴公司也能累積有興趣的買家名單。</span></div></div></div><p class="end">歡迎與我聯繫，我很樂意為您說明細節並提供報價。— 李亞諾 Emi</p>',
  hero1:'示意圖片（Rizky Nuriman / Unsplash），建議換成貴公司工廠實景照片。',hero1alt:'不鏽鋼板 TIG 焊接',hero2:'90 公分壁掛式排油煙機 · LED',hero3:'崁入式瓦斯爐',
  notice:'此為 Ting Jin Kitchenware 網站改版提案樣稿，並非官方網站。圖片取自目前的台灣經貿網商店，黃色標示處需由貴公司補充資料。',
  brandSub:'KITCHENWARE · 1986 年創立',

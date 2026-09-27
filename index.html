@@ -178,6 +178,23 @@ footer a{color:inherit}
 .prop-slot{border:2px dashed var(--line);border-radius:10px;padding:20px;color:var(--muted);font-size:.95rem}
 .prop-scrim{position:fixed;inset:0;z-index:35;background:rgb(0 0 0 / .35)}
 @media (max-width:760px){.prop-tab{top:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:none;font-size:.8rem;padding:12px 8px}}
+.prop-tab.nudge{animation:tabNudge 4s ease-in-out infinite}
+@keyframes tabNudge{0%,78%,100%{transform:translateY(-50%) translateX(0)}82%{transform:translateY(-50%) translateX(-10px)}86%{transform:translateY(-50%) translateX(0)}90%{transform:translateY(-50%) translateX(-6px)}94%{transform:translateY(-50%) translateX(0)}}
+.prop-tab::after{content:"";position:absolute;inset:-4px -4px -4px -4px;border-radius:10px 0 0 10px;border:2px solid var(--flame);opacity:0;pointer-events:none}
+.prop-tab.nudge::after{animation:tabRing 2s ease-out infinite}
+@keyframes tabRing{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.25)}}
+.prop-bubble{position:fixed;right:58px;top:50%;transform:translateY(-50%);z-index:31;max-width:240px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 34px 12px 14px;box-shadow:0 8px 28px rgb(0 0 0 / .22);font-size:.9rem;line-height:1.4;cursor:pointer;animation:bubbleIn .35s ease-out both}
+.prop-bubble::after{content:"";position:absolute;right:-7px;top:50%;width:12px;height:12px;background:var(--surface);border-right:1px solid var(--line);border-top:1px solid var(--line);transform:translateY(-50%) rotate(45deg)}
+.prop-bubble b{display:block;color:var(--flame);font-size:.78rem;letter-spacing:.04em;margin-bottom:2px}
+.prop-bubble .x{position:absolute;top:6px;right:6px;background:none;border:0;color:var(--muted);font-size:1.1rem;line-height:1;cursor:pointer;padding:4px}
+@keyframes bubbleIn{from{opacity:0;transform:translateY(-50%) translateX(12px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+@media (max-width:760px){
+  .prop-tab.nudge{animation:tabNudgeM 4s ease-in-out infinite}
+  @keyframes tabNudgeM{0%,78%,100%{transform:translateX(0)}82%{transform:translateX(-10px)}86%{transform:translateX(0)}90%{transform:translateX(-6px)}94%{transform:translateX(0)}}
+  .prop-bubble{top:auto;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:none;right:52px;animation:none}
+  .prop-bubble::after{top:auto;bottom:18px;transform:rotate(45deg)}
+}
+@media (prefers-reduced-motion:reduce){.prop-tab.nudge,.prop-tab.nudge::after,.prop-bubble{animation:none}}
 .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 20px rgb(0 0 0 / .2);border-radius:999px;padding:13px 18px}
 </style>
 </head>
@@ -375,6 +392,7 @@ footer a{color:inherit}
 <a class="btn btn-wa wa-float" href="#contacto" data-i18n="ctChat"></a>
 
 <button class="prop-tab" type="button" id="prop-open" aria-controls="prop-panel" aria-expanded="false" data-i18n="propTab"></button>
+<div class="prop-bubble" id="prop-bubble" role="status" hidden><button class="x" type="button" id="prop-bubble-x" data-i18n-aria="propBubbleClose">×</button><b data-i18n="propBubbleHead"></b><span data-i18n="propBubble"></span></div>
 <div class="prop-scrim" id="prop-scrim" hidden></div>
 <aside class="prop-panel" id="prop-panel" aria-labelledby="prop-title" aria-hidden="true">
   <button class="close" type="button" id="prop-close" data-i18n="propClose"></button>
@@ -387,6 +405,7 @@ footer a{color:inherit}
 <script>
 const T={
 es:{
+ propBubbleHead:'Para Ting Jin',propBubble:'Le preparé una propuesta para mejorar su página. Ábrala aquí →',propBubbleClose:'Cerrar aviso',
  propTab:'Propuesta de Emi 李亞諾',propTitle:'Propuesta de mejora',propClose:'Cerrar',propSlot:'Aquí irá la propuesta de Emi para Ting Jin Kitchenware.',
  hero1:'Imagen ilustrativa (Rizky Nuriman / Unsplash). Sustituir por una foto de su fábrica.',hero1alt:'Soldadura TIG de lámina de acero inoxidable',hero2:'Campana de pared 90 cm · LED',hero3:'Estufa de gas empotrable',
  notice:'Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.',
@@ -434,6 +453,7 @@ es:{
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986',foot2:'Maqueta de propuesta, 2026'
 },
 en:{
+ propBubbleHead:'For Ting Jin',propBubble:'I prepared a proposal to improve your page. Open it here →',propBubbleClose:'Dismiss',
  propTab:'Proposal by Emi 李亞諾',propTitle:'Improvement proposal',propClose:'Close',propSlot:'Emi’s proposal for Ting Jin Kitchenware will go here.',
  hero1:'Illustrative photo (Rizky Nuriman / Unsplash). Replace with a photo of your factory.',hero1alt:'TIG welding of stainless steel sheet',hero2:'90 cm wall hood · LED',hero3:'Built-in gas stove',
  notice:'Proposal mockup for Ting Jin Kitchenware. This is not the official website. Photos come from the current Taiwantrade store. Items highlighted in yellow must be filled in by the company.',
@@ -481,6 +501,7 @@ en:{
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwan · since 1986',foot2:'Proposal mockup, 2026'
 },
 zh:{
+ propBubbleHead:'給 Ting Jin',propBubble:'我為貴公司準備了網站改版提案，請點此查看 →',propBubbleClose:'關閉提示',
  propTab:'李亞諾 Emi 提案',propTitle:'改版提案',propClose:'關閉',propSlot:'此處將放上李亞諾（Emi）為 Ting Jin Kitchenware 準備的提案內容。',
  hero1:'示意圖片（Rizky Nuriman / Unsplash），建議換成貴公司工廠實景照片。',hero1alt:'不鏽鋼板 TIG 焊接',hero2:'90 公分壁掛式排油煙機 · LED',hero3:'崁入式瓦斯爐',
  notice:'此為 Ting Jin Kitchenware 網站改版提案樣稿，並非官方網站。圖片取自目前的台灣經貿網商店，黃色標示處需由貴公司補充資料。',
@@ -562,6 +583,7 @@ function setLang(l){
   const t=T[l];
   document.documentElement.lang=HTML_LANG[l];
   document.querySelectorAll('[data-i18n]').forEach(el=>{const v=t[el.dataset.i18n]; if(v!==undefined) el.innerHTML=v;});
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',t[el.dataset.i18nAria]||''));
   document.querySelectorAll('[data-i18n-alt]').forEach(el=>{el.alt=t[el.dataset.i18nAlt]||'';});
   document.querySelectorAll('.steps li').forEach(li=>li.dataset.label=t.step+' '+li.dataset.step);
   document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
@@ -581,7 +603,12 @@ document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
 }));
 document.getElementById('quote').addEventListener('submit',e=>{e.preventDefault();document.getElementById('q-out').hidden=false;});
 const pp=document.getElementById('prop-panel'),po=document.getElementById('prop-open'),ps=document.getElementById('prop-scrim');
-function prop(open){pp.classList.toggle('open',open);pp.setAttribute('aria-hidden',!open);po.setAttribute('aria-expanded',open);ps.hidden=!open;if(open)document.getElementById('prop-close').focus();else po.focus();}
+function prop(open){if(open)stopInvite();pp.classList.toggle('open',open);pp.setAttribute('aria-hidden',!open);po.setAttribute('aria-expanded',open);ps.hidden=!open;if(open)document.getElementById('prop-close').focus();else po.focus();}
+const pb=document.getElementById('prop-bubble');
+let seen=false;try{seen=localStorage.getItem('tj-prop-seen')==='1'}catch(e){}
+function stopInvite(){po.classList.remove('nudge');pb.hidden=true;try{localStorage.setItem('tj-prop-seen','1')}catch(e){}}
+if(!seen){po.classList.add('nudge');setTimeout(()=>{if(po.classList.contains('nudge'))pb.hidden=false;},2500);}
+pb.addEventListener('click',e=>{if(e.target.id==='prop-bubble-x'){pb.hidden=true;return;}prop(true);});
 po.addEventListener('click',()=>prop(true));
 document.getElementById('prop-close').addEventListener('click',()=>prop(false));
 ps.addEventListener('click',()=>prop(false));

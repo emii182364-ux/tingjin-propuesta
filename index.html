@@ -110,6 +110,15 @@ nav a:hover{color:var(--accent)}
 .card h3{font-size:1.05rem;font-stretch:90%}
 .card .spec{font-size:.85rem;color:var(--muted)}
 .card a.more{margin-top:auto;font-weight:600;font-size:.9rem;text-decoration:none}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card .ph{padding:6%}
+  .card .body{padding:10px 10px 12px;gap:4px}
+  .card h3{font-size:.92rem;line-height:1.2}
+  .card .model{font-size:.68rem}
+  .card .spec{font-size:.76rem}
+  .card a.more{font-size:.8rem}
+}
 .tag{justify-self:start;font:500 .7rem/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:var(--steel);color:var(--muted)}
 
 /* ficha */

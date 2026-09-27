@@ -5,7 +5,7 @@ portada, catálogo con nombres claros, ficha de producto completa (TJ-82124), pr
 
 - No es el sitio oficial de la empresa.
 - Los datos marcados en amarillo (caudal, pedido mínimo, WhatsApp, etc.) los tiene que aportar Ting Jin.
-- Las ilustraciones son provisionales: van a sustituirse por fotos reales.
+- Las fotos se cargan desde su tienda actual en Taiwantrade (img.itaiwantrade.com); necesita conexión a internet.
 
 ## Ver en local
 

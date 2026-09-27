@@ -58,7 +58,7 @@ section+section{border-top:1px solid var(--line)}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:20px;min-height:64px}
 .brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink)}
-.brand b{font:800 1.35rem/1 var(--display);font-stretch:75%;letter-spacing:.02em}
+.brand b{white-space:nowrap;font:800 1.35rem/1 var(--display);font-stretch:75%;letter-spacing:.02em}
 .brand span{font:500 .7rem/1 var(--mono);color:var(--muted);letter-spacing:.06em}
 nav{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
 nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
@@ -68,6 +68,7 @@ nav a:hover{color:var(--accent)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
 .btn-wa{background:var(--wa);color:#fff}
 @media (max-width:760px){nav{display:none}.bar .btn-wa{margin-left:auto}}
+@media (max-width:420px){.brand span{display:none}}
 
 /* hero */
 .hero{padding-block:clamp(40px,7vw,80px);background:linear-gradient(180deg,var(--surface),var(--bg))}
@@ -80,7 +81,8 @@ nav a:hover{color:var(--accent)}
 .facts div{background:var(--surface);padding:14px 16px}
 .facts b{display:block;font:750 1.6rem/1 var(--display);font-stretch:80%;font-variant-numeric:tabular-nums}
 .facts span{font-size:.82rem;color:var(--muted)}
-.hero-art{background:var(--steel);border-radius:10px;padding:24px;aspect-ratio:5/4;display:grid;place-items:center;max-width:100%}
+.hero-art{background:#fff;border-radius:10px;padding:24px;aspect-ratio:5/4;display:grid;place-items:center;max-width:100%;border:1px solid var(--line)}
+.hero-art img{width:100%;max-height:340px;object-fit:contain}
 .hero-art figcaption{font:400 .75rem/1.3 var(--mono);color:var(--muted);margin-top:10px;text-align:center}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
 
@@ -97,8 +99,8 @@ nav a:hover{color:var(--accent)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:20px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-.card .ph{aspect-ratio:1/1;background:var(--steel);display:grid;place-items:center;padding:18%}
-.card .ph svg{width:100%;height:auto;color:var(--muted)}
+.card .ph{aspect-ratio:1/1;background:#fff;display:grid;place-items:center;padding:8%;border-bottom:1px solid var(--line)}
+.card .ph img{width:100%;height:100%;object-fit:contain}
 .card .body{padding:14px 16px 16px;display:grid;gap:6px;flex:1}
 .card .model{font:500 .78rem var(--mono);color:var(--accent)}
 .card h3{font-size:1.05rem;font-stretch:90%}
@@ -109,7 +111,8 @@ nav a:hover{color:var(--accent)}
 /* ficha */
 .detail{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;margin-top:32px;align-items:start}
 .gallery{display:grid;gap:10px}
-.gallery .main{background:var(--steel);border-radius:10px;aspect-ratio:4/3;display:grid;place-items:center;padding:12%}
+.gallery .main{background:#fff;border:1px solid var(--line);border-radius:10px;aspect-ratio:4/3;display:grid;place-items:center;padding:6%}
+.gallery .main img{width:100%;height:100%;object-fit:contain}
 .gallery .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .gallery .thumbs div{background:var(--steel);border-radius:6px;aspect-ratio:1;display:grid;place-items:center;font:400 .7rem var(--mono);color:var(--muted);text-align:center;padding:4px}
 .spec-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.95rem}
@@ -158,7 +161,7 @@ footer a{color:inherit}
 </head>
 <body>
 
-<div class="notice">Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Los datos marcados en amarillo los debe completar la empresa.</div>
+<div class="notice">Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.</div>
 
 <header>
   <div class="wrap bar">
@@ -194,14 +197,8 @@ footer a{color:inherit}
     </div>
     <figure class="hero-art" style="margin:0">
       <div>
-        <svg viewBox="0 0 320 220" role="img" aria-label="Ilustración de campana extractora">
-          <rect x="130" y="0" width="60" height="70" fill="currentColor" opacity=".25"/>
-          <path d="M40 150 L100 70 L220 70 L280 150 Z" fill="currentColor" opacity=".45"/>
-          <rect x="30" y="150" width="260" height="22" rx="3" fill="currentColor" opacity=".7"/>
-          <rect x="60" y="176" width="200" height="4" fill="var(--flame)" opacity=".8"/>
-          <circle cx="245" cy="161" r="4" fill="var(--bg)"/><circle cx="260" cy="161" r="4" fill="var(--bg)"/>
-        </svg>
-        <figcaption>Aquí va una foto real: campana instalada o línea de producción</figcaption>
+        <img src="https://img.itaiwantrade.com/ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB.webp?d=960x960" alt="Campana extractora industrial Ting Jin de acero inoxidable, 190 cm" fetchpriority="high">
+        <figcaption>Campana industrial TJ-R82190A · 190 cm. Mejor aún: una foto de la campana instalada o de la fábrica.</figcaption>
       </div>
     </figure>
   </div>
@@ -252,15 +249,9 @@ footer a{color:inherit}
     <p class="lead">Así debería verse cada ficha: nombre que describe el producto, datos técnicos completos y condiciones comerciales a la vista.</p>
     <div class="detail">
       <div class="gallery">
-        <div class="main">
-          <svg viewBox="0 0 320 200" role="img" aria-label="Ilustración de campana combinada">
-            <path d="M20 120 L70 40 L250 40 L300 120 Z" fill="currentColor" opacity=".45" style="color:var(--muted)"/>
-            <rect x="10" y="120" width="300" height="24" rx="3" fill="currentColor" opacity=".7" style="color:var(--muted)"/>
-            <rect x="120" y="0" width="80" height="40" fill="currentColor" opacity=".25" style="color:var(--muted)"/>
-          </svg>
-        </div>
+        <div class="main"><img src="https://img.itaiwantrade.com/ca6f90a3-ca14-470f-ae4e-af7b75d6f86a/0908-2.webp?d=960x960" alt="Campana extractora combinada TJ-82124 de acero inoxidable 430"></div>
         <div class="thumbs">
-          <div>Frontal</div><div>Detalle filtro</div><div>Instalada</div><div>Embalaje</div>
+          <div>Foto sugerida: frontal</div><div>Foto sugerida: filtro</div><div>Foto sugerida: instalada</div><div>Foto sugerida: embalaje</div>
         </div>
       </div>
       <div>
@@ -371,30 +362,28 @@ footer a{color:inherit}
 <a class="btn btn-wa wa-float" href="#contacto" aria-label="Contactar por WhatsApp">WhatsApp</a>
 
 <script>
-const hood='<svg viewBox="0 0 100 70" aria-hidden="true"><rect x="42" y="0" width="16" height="22" fill="currentColor" opacity=".3"/><path d="M10 50 L30 22 L70 22 L90 50Z" fill="currentColor" opacity=".55"/><rect x="6" y="50" width="88" height="9" rx="2" fill="currentColor"/></svg>';
-const stove='<svg viewBox="0 0 100 70" aria-hidden="true"><rect x="5" y="20" width="90" height="34" rx="4" fill="currentColor" opacity=".55"/><circle cx="30" cy="37" r="10" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="70" cy="37" r="10" fill="none" stroke="currentColor" stroke-width="4"/></svg>';
-const heater='<svg viewBox="0 0 100 70" aria-hidden="true"><rect x="30" y="2" width="40" height="62" rx="5" fill="currentColor" opacity=".55"/><rect x="40" y="14" width="20" height="10" rx="2" fill="currentColor"/><circle cx="50" cy="44" r="6" fill="currentColor"/></svg>';
-const fan='<svg viewBox="0 0 100 70" aria-hidden="true"><circle cx="50" cy="35" r="30" fill="none" stroke="currentColor" stroke-width="4" opacity=".7"/><path d="M50 35 L50 9 M50 35 L73 48 M50 35 L27 48" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity=".55"/></svg>';
 const P=[
- {m:'TJ-82124',n:'Campana combinada acero inox 430 – 124/190 cm',s:'1240 × 820 × 500 mm',c:['campana'],i:hood,link:'#ficha'},
- {m:'TJ-82124B',n:'Campana combinada acero inox – versión B',s:'Medidas por confirmar',c:['campana'],i:hood},
- {m:'TJ-356',n:'Campana extractora de pared acero inox',s:'Medidas por confirmar',c:['campana'],i:hood},
- {m:'TJ-1250',n:'Campana extractora de pared 125 cm',s:'Medidas por confirmar',c:['campana'],i:hood},
- {m:'192CM',n:'Sistema de ventilación profesional de pared 192 cm',s:'Para cocinas profesionales',c:['campana','industrial'],i:hood,t:'Destacado'},
- {m:'F102-1Q',n:'Campana extractora industrial',s:'Medidas por confirmar',c:['campana','industrial'],i:hood},
- {m:'E-70252',n:'Estufa de gas industrial',s:'Nuevo modelo',c:['estufa','industrial'],i:stove,t:'Nuevo'},
- {m:'TJ-16L',n:'Calentador de agua a gas 16 L',s:'Capacidad 16 L/min',c:['calentador'],i:heater},
- {m:'TJ-13L',n:'Calentador de agua a gas 13 L',s:'Capacidad 13 L/min',c:['calentador'],i:heater},
- {m:'TJ-12-B',n:'Calentador de agua a gas 12 L',s:'Capacidad 12 L/min',c:['calentador'],i:heater},
- {m:'LY-12',n:'Ventilador centrífugo industrial',s:'Para extracción de humos',c:['industrial'],i:fan}
+ {m:'TJ-82124',n:'Campana combinada acero inox 430 – 124/190 cm',s:'1240 × 820 × 500 mm',c:['campana'],img:'https://img.itaiwantrade.com/ca6f90a3-ca14-470f-ae4e-af7b75d6f86a/0908-2.webp?d=480x480',link:'#ficha'},
+ {m:'',n:'Sistema de ventilación profesional de pared 192 cm',s:'Para cocinas profesionales',c:['campana','industrial'],img:'https://img.itaiwantrade.com/5e0fe03f-5352-41b9-b9d8-7084631e8213/192123-C.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/sistema-de-ventilaci%C3%B3n-profesional-para-campana-extractora-de-cocina-de-pared-de-192-cm-3358645.html',t:'Destacado'},
+ {m:'TJ-R82190A',n:'Campana extractora industrial 190 cm',s:'Acero inoxidable',c:['campana','industrial'],img:'https://img.itaiwantrade.com/ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-industrial-2827460.html'},
+ {m:'F102-1Q',n:'Campana extractora industrial compacta',s:'605 × 670 × 800/950 mm',c:['campana','industrial'],img:'https://img.itaiwantrade.com/7bf97251-16eb-4405-a554-c2c7c438fe5c/m01B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-industrial-2827461.html'},
+ {m:'TJ-R1250T',n:'Campana extractora industrial 125 cm',s:'Acero inoxidable',c:['campana','industrial'],img:'https://img.itaiwantrade.com/19865c60-8a6a-4cfe-a065-d5b0205ca177/12501250T.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-industrial-2827364.html'},
+ {m:'',n:'Campana de pared 90 cm con luz LED',s:'900 × 457 mm · todo acero inox',c:['campana'],img:'https://img.itaiwantrade.com/3523c62d-5830-4feb-989f-2baba811b296/m28-3.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-1860134.html'},
+ {m:'TJ-R9TTB',n:'Campana extractora de pared',s:'Acero inoxidable',c:['campana'],img:'https://img.itaiwantrade.com/89792fbe-25db-4947-9f31-1a67d133c28d/829TTB-N-1.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-2827381.html'},
+ {m:'',n:'Campana extractora de pared',s:'Acero inoxidable',c:['campana'],img:'https://img.itaiwantrade.com/8a0463a0-efcd-4c6d-916e-ef742cb48f81/03-12B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-2827459.html'},
+ {m:'',n:'Estufa de gas empotrable',s:'Acero inoxidable',c:['estufa'],img:'https://img.itaiwantrade.com/3acd615e-7e56-4fcd-8b49-a055e0a80704/0315-B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/estufa-2843800.html'},
+ {m:'',n:'Estufa de gas de sobremesa',s:'Acero inoxidable',c:['estufa'],img:'https://img.itaiwantrade.com/ac8e665e-f927-49e4-b5d1-4cb1e00279b2/108A-1.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/estufa-2833602.html'},
+ {m:'',n:'Calentador de agua a gas 13 L',s:'Tiro forzado',c:['calentador'],img:'https://img.itaiwantrade.com/b8eb7b0e-eba9-499c-b484-0daff551543d/13LB-2.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/calentador-de-agua-2827356.html'},
+ {m:'',n:'Calentador de agua a gas 12 L',s:'Tiro forzado',c:['calentador'],img:'https://img.itaiwantrade.com/42d66541-b836-4e99-9cad-cc8ed3d6c0c5/12L-1-B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/calentador-de-agua-2827363.html'},
+ {m:'',n:'Ventilador de pie industrial',s:'Metálico, de alto caudal',c:['industrial'],img:'https://img.itaiwantrade.com/9ee125bc-ca35-413e-88d2-089783db3c12/12-01BB.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/ventilador-2828236.html'}
 ];
 const grid=document.getElementById('grid');
 function render(f){
   grid.innerHTML=P.filter(p=>f==='all'||p.c.includes(f)).map(p=>`
-   <article class="card"><div class="ph">${p.i}</div><div class="body">
+   <article class="card"><div class="ph"><img src="${p.img}" alt="${p.n}" loading="lazy" width="480" height="480"></div><div class="body">
     ${p.t?`<span class="tag">${p.t}</span>`:''}
-    <span class="model">${p.m}</span><h3>${p.n}</h3><span class="spec">${p.s}</span>
-    <a class="more" href="${p.link||'#contacto'}">${p.link?'Ver ficha':'Pedir presupuesto'} →</a>
+    <span class="model">${p.m||'Modelo por confirmar'}</span><h3>${p.n}</h3><span class="spec">${p.s}</span>
+    <a class="more" href="${p.link}"${p.link.startsWith('#')?'':' target="_blank" rel="noopener"'}>${p.link.startsWith('#')?'Ver ficha de ejemplo':'Ver en Taiwantrade'} →</a>
    </div></article>`).join('');
 }
 render('all');

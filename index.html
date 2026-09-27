@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ting Jin Kitchenware – Maqueta</title>
+<meta name="description" content="Maqueta de propuesta: fabricante taiwanés de campanas extractoras, estufas y calentadores de acero inoxidable desde 1986. OEM y marca propia.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F6; --surface:#FFFFFF; --steel:#DDE3E6; --line:#C9D1D5;
+  --ink:#172126; --muted:#56646B; --accent:#0E5A6B; --accent-ink:#FFFFFF;
+  --flame:#E0662A; --wa:#1F9D55; --note:#FFF4D6; --note-ink:#6B4A00;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutter:clamp(16px,4vw,40px); --max:1160px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1518; --surface:#161F23; --steel:#1E2A2F; --line:#2C3A40;
+    --ink:#E6ECEE; --muted:#9AA9AF; --accent:#4FB3C6; --accent-ink:#0B1316;
+    --flame:#F08A52; --wa:#3CC47A; --note:#3A2E12; --note-ink:#F5D98B;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1518; --surface:#161F23; --steel:#1E2A2F; --line:#2C3A40;
+  --ink:#E6ECEE; --muted:#9AA9AF; --accent:#4FB3C6; --accent-ink:#0B1316;
+  --flame:#F08A52; --wa:#3CC47A; --note:#3A2E12; --note-ink:#F5D98B;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
+img,svg{max-width:100%;display:block}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--flame);outline-offset:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+h1,h2,h3{font-family:var(--display);font-stretch:80%;line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:750}
+h3{font-size:1.25rem;font-weight:700}
+.eyebrow{font:500 .78rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono)}
+section{padding-block:clamp(48px,8vw,88px)}
+section+section{border-top:1px solid var(--line)}
+.lead{color:var(--muted);max-width:62ch;margin:12px 0 0}
+
+/* aviso maqueta */
+.notice{background:var(--note);color:var(--note-ink);font-size:.85rem;text-align:center;padding:8px var(--gutter)}
+
+/* cabecera */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;min-height:64px}
+.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink)}
+.brand b{font:800 1.35rem/1 var(--display);font-stretch:75%;letter-spacing:.02em}
+.brand span{font:500 .7rem/1 var(--mono);color:var(--muted);letter-spacing:.06em}
+nav{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:6px;padding:11px 18px;font-weight:600;text-decoration:none;border:1px solid transparent;font-size:.95rem;cursor:pointer}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn-wa{background:var(--wa);color:#fff}
+@media (max-width:760px){nav{display:none}.bar .btn-wa{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,80px);background:linear-gradient(180deg,var(--surface),var(--bg))}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6.2vw,4.4rem);font-weight:800;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:1.1rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:32px}
+.facts div{background:var(--surface);padding:14px 16px}
+.facts b{display:block;font:750 1.6rem/1 var(--display);font-stretch:80%;font-variant-numeric:tabular-nums}
+.facts span{font-size:.82rem;color:var(--muted)}
+.hero-art{background:var(--steel);border-radius:10px;padding:24px;aspect-ratio:5/4;display:grid;place-items:center;max-width:100%}
+.hero-art figcaption{font:400 .75rem/1.3 var(--mono);color:var(--muted);margin-top:10px;text-align:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+
+/* líneas */
+.lines{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.line-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:10px}
+.line-card ul{margin:0;padding-left:18px;color:var(--muted)}
+.line-card .for{font-size:.88rem}
+@media (max-width:700px){.lines{grid-template-columns:1fr}}
+
+/* catálogo */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 .88rem var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{aspect-ratio:1/1;background:var(--steel);display:grid;place-items:center;padding:18%}
+.card .ph svg{width:100%;height:auto;color:var(--muted)}
+.card .body{padding:14px 16px 16px;display:grid;gap:6px;flex:1}
+.card .model{font:500 .78rem var(--mono);color:var(--accent)}
+.card h3{font-size:1.05rem;font-stretch:90%}
+.card .spec{font-size:.85rem;color:var(--muted)}
+.card a.more{margin-top:auto;font-weight:600;font-size:.9rem;text-decoration:none}
+.tag{justify-self:start;font:500 .7rem/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:var(--steel);color:var(--muted)}
+
+/* ficha */
+.detail{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;margin-top:32px;align-items:start}
+.gallery{display:grid;gap:10px}
+.gallery .main{background:var(--steel);border-radius:10px;aspect-ratio:4/3;display:grid;place-items:center;padding:12%}
+.gallery .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gallery .thumbs div{background:var(--steel);border-radius:6px;aspect-ratio:1;display:grid;place-items:center;font:400 .7rem var(--mono);color:var(--muted);text-align:center;padding:4px}
+.spec-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.95rem}
+.spec-table th,.spec-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.spec-table th{width:42%;color:var(--muted);font-weight:500}
+.spec-table td{font-family:var(--mono);font-size:.9rem;font-variant-numeric:tabular-nums}
+.todo{background:var(--note);color:var(--note-ink);padding:1px 5px;border-radius:3px;font-size:.8rem}
+.table-wrap{overflow-x:auto}
+@media (max-width:860px){.detail{grid-template-columns:1fr}}
+
+/* OEM */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:32px;counter-reset:s;list-style:none;padding:0}
+.steps li{padding:20px 20px 20px 0;border-top:3px solid var(--accent);counter-increment:s;display:grid;gap:6px}
+.steps li+li{padding-left:20px;border-left:1px solid var(--line)}
+.steps li::before{content:"Paso " counter(s);font:500 .75rem var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.steps p{margin:0;color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}.steps li:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}.steps li,.steps li+li{padding-left:0;border-left:0}}
+
+/* confianza */
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.trust div{display:grid;gap:6px}
+.trust p{margin:0;color:var(--muted);font-size:.95rem}
+.markets{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+@media (max-width:760px){.trust{grid-template-columns:1fr}}
+
+/* contacto */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px}
+.channels{display:grid;gap:12px}
+.channel{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;flex-wrap:wrap}
+.channel b{display:block}
+.channel span{font:400 .9rem var(--mono);color:var(--muted)}
+form{display:grid;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
+label{display:grid;gap:4px;font-size:.88rem;font-weight:500}
+input,select,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-msg{font-size:.9rem;color:var(--wa)}
+@media (max-width:760px){.contact{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:var(--bg);padding-block:32px;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:inherit}
+
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 20px rgb(0 0 0 / .2);border-radius:999px;padding:13px 18px}
+</style>
+</head>
+<body>
+
+<div class="notice">Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Los datos marcados en amarillo los debe completar la empresa.</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio"><b>TING JIN</b><span>KITCHENWARE · DESDE 1986</span></a>
+    <nav aria-label="Principal">
+      <a href="#lineas">Productos</a>
+      <a href="#ficha">Ficha de ejemplo</a>
+      <a href="#oem">OEM / marca propia</a>
+      <a href="#empresa">Empresa</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-wa" href="#contacto">WhatsApp</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Fabricante en Taiwán · OEM · ODM</p>
+      <h1>Campanas extractoras y estufas de <em>acero inoxidable</em>, fabricadas desde 1986</h1>
+      <p class="lead">Línea doméstica e industrial para importadores y distribuidores de Latinoamérica. Modelos estándar o con su propia marca, incluso en pedidos pequeños.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contacto">Pedir presupuesto</a>
+        <a class="btn btn-ghost" href="#contacto">Descargar catálogo PDF</a>
+      </div>
+      <div class="facts">
+        <div><b>40</b><span>años fabricando</span></div>
+        <div><b>AISI 430</b><span>acero inoxidable</span></div>
+        <div><b>OEM</b><span>marca del cliente</span></div>
+      </div>
+    </div>
+    <figure class="hero-art" style="margin:0">
+      <div>
+        <svg viewBox="0 0 320 220" role="img" aria-label="Ilustración de campana extractora">
+          <rect x="130" y="0" width="60" height="70" fill="currentColor" opacity=".25"/>
+          <path d="M40 150 L100 70 L220 70 L280 150 Z" fill="currentColor" opacity=".45"/>
+          <rect x="30" y="150" width="260" height="22" rx="3" fill="currentColor" opacity=".7"/>
+          <rect x="60" y="176" width="200" height="4" fill="var(--flame)" opacity=".8"/>
+          <circle cx="245" cy="161" r="4" fill="var(--bg)"/><circle cx="260" cy="161" r="4" fill="var(--bg)"/>
+        </svg>
+        <figcaption>Aquí va una foto real: campana instalada o línea de producción</figcaption>
+      </div>
+    </figure>
+  </div>
+</div>
+
+<section id="lineas">
+  <div class="wrap">
+    <p class="eyebrow">Dos líneas de producto</p>
+    <h2>Doméstica e industrial, cada una para su comprador</h2>
+    <div class="lines">
+      <div class="line-card">
+        <span class="tag">Hogar</span>
+        <h3>Línea doméstica</h3>
+        <ul>
+          <li>Campanas de pared, isla y combinadas</li>
+          <li>Estufas de gas empotrables</li>
+          <li>Calentadores de agua a gas de 10 a 16 L</li>
+        </ul>
+        <p class="for">Para distribuidores de electrodomésticos, constructoras y tiendas de cocina.</p>
+      </div>
+      <div class="line-card">
+        <span class="tag">Restaurantes</span>
+        <h3>Línea industrial</h3>
+        <ul>
+          <li>Campanas extractoras industriales hasta 192 cm</li>
+          <li>Estufas de gas industriales</li>
+          <li>Ventiladores centrífugos</li>
+        </ul>
+        <p class="for">Para equipadores de cocinas profesionales, hoteles y restaurantes.</p>
+      </div>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrar productos">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">Todos</button>
+      <button class="chip" type="button" data-f="campana" aria-pressed="false">Campanas</button>
+      <button class="chip" type="button" data-f="estufa" aria-pressed="false">Estufas</button>
+      <button class="chip" type="button" data-f="calentador" aria-pressed="false">Calentadores</button>
+      <button class="chip" type="button" data-f="industrial" aria-pressed="false">Industrial</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="ficha">
+  <div class="wrap">
+    <p class="eyebrow">Ficha de producto · ejemplo</p>
+    <h2>Campana extractora combinada de acero inoxidable 430 – 124 y 190 cm</h2>
+    <p class="lead">Así debería verse cada ficha: nombre que describe el producto, datos técnicos completos y condiciones comerciales a la vista.</p>
+    <div class="detail">
+      <div class="gallery">
+        <div class="main">
+          <svg viewBox="0 0 320 200" role="img" aria-label="Ilustración de campana combinada">
+            <path d="M20 120 L70 40 L250 40 L300 120 Z" fill="currentColor" opacity=".45" style="color:var(--muted)"/>
+            <rect x="10" y="120" width="300" height="24" rx="3" fill="currentColor" opacity=".7" style="color:var(--muted)"/>
+            <rect x="120" y="0" width="80" height="40" fill="currentColor" opacity=".25" style="color:var(--muted)"/>
+          </svg>
+        </div>
+        <div class="thumbs">
+          <div>Frontal</div><div>Detalle filtro</div><div>Instalada</div><div>Embalaje</div>
+        </div>
+      </div>
+      <div>
+        <p class="mono" style="margin:0;color:var(--accent)">Modelo TJ-82124 · Hecho en Taiwán</p>
+        <div class="table-wrap">
+        <table class="spec-table">
+          <tr><th>Material</th><td>Acero inoxidable AISI 430</td></tr>
+          <tr><th>Medidas 124 cm</th><td>1240 × 820 × 500 mm</td></tr>
+          <tr><th>Medidas 190 cm</th><td>1900 × 820 × 500 mm</td></tr>
+          <tr><th>Caudal de aspiración</th><td><span class="todo">completar</span> m³/h</td></tr>
+          <tr><th>Ruido</th><td><span class="todo">completar</span> dB</td></tr>
+          <tr><th>Voltaje</th><td>110 V / 220 V <span class="todo">confirmar</span></td></tr>
+          <tr><th>Pedido mínimo</th><td><span class="todo">completar</span> unidades</td></tr>
+          <tr><th>Plazo de producción</th><td><span class="todo">completar</span> días</td></tr>
+          <tr><th>Unidades por contenedor 20′ / 40′</th><td><span class="todo">completar</span></td></tr>
+          <tr><th>Condiciones</th><td>FOB Taiwán · T/T <span class="todo">confirmar</span></td></tr>
+          <tr><th>Marca propia (OEM)</th><td>Disponible</td></tr>
+        </table>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contacto">Pedir presupuesto de este modelo</a>
+          <a class="btn btn-ghost" href="#contacto">Ficha técnica PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oem">
+  <div class="wrap">
+    <p class="eyebrow">OEM / marca propia</p>
+    <h2>Su marca en nuestras campanas, desde pedidos pequeños</h2>
+    <p class="lead">Fabricamos modelos estándar con su logo o desarrollamos un diseño a medida con nuestro equipo de ingeniería.</p>
+    <ol class="steps">
+      <li><h3>Consulta</h3><p>Nos cuenta qué modelos, cantidades y mercado. Respondemos en 24 h.</p></li>
+      <li><h3>Muestra</h3><p>Enviamos muestra con su marca para aprobar acabado y embalaje.</p></li>
+      <li><h3>Producción</h3><p>Fabricación y control de calidad en planta. Plazo <span class="todo">completar</span> días.</p></li>
+      <li><h3>Envío</h3><p>Carga en contenedor FOB puerto de Taiwán, con documentación de exportación.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="empresa">
+  <div class="wrap">
+    <p class="eyebrow">Empresa</p>
+    <h2>Cuatro décadas en acero inoxidable</h2>
+    <div class="trust">
+      <div>
+        <h3>Desde 1986</h3>
+        <p>Fabricante, OEM y ODM. Equipo propio de ingenieros para modelos estándar y diseños personalizados.</p>
+      </div>
+      <div>
+        <h3>Exportamos a</h3>
+        <div class="markets">
+          <span class="tag">República Dominicana</span><span class="tag">Panamá</span><span class="tag">Paraguay</span><span class="tag">Estados Unidos</span><span class="tag">Hong Kong</span><span class="tag">Tailandia</span>
+        </div>
+      </div>
+      <div>
+        <h3>Certificaciones</h3>
+        <p>D-U-N-S® · Proveedor e-Portal Taiwantrade · <span class="todo">añadir normas de gas, CE, ISO</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <p class="eyebrow">Contacto</p>
+    <h2>Pida presupuesto y le respondemos en español</h2>
+    <div class="contact">
+      <div class="channels">
+        <div class="channel"><div><b>WhatsApp</b><span>+886 <span class="todo">número</span></span></div><a class="btn btn-wa" href="#contacto">Escribir</a></div>
+        <div class="channel"><div><b>Correo</b><span><span class="todo">ventas@…</span></span></div></div>
+        <div class="channel"><div><b>Taiwantrade</b><span>tingjin.es.taiwantrade.com</span></div><a class="btn btn-ghost" href="https://tingjin.es.taiwantrade.com/" target="_blank" rel="noopener">Ver tienda</a></div>
+        <div class="channel"><div><b>Horario</b><span>Lun–Vie 9:00–18:00 (hora de Taiwán, GMT+8)</span></div></div>
+      </div>
+      <form id="quote">
+        <div class="row2">
+          <label for="q-name">Nombre<input id="q-name" required autocomplete="name"></label>
+          <label for="q-company">Empresa<input id="q-company" autocomplete="organization"></label>
+        </div>
+        <div class="row2">
+          <label for="q-country">País<input id="q-country" autocomplete="country-name"></label>
+          <label for="q-qty">Cantidad aproximada<input id="q-qty" inputmode="numeric"></label>
+        </div>
+        <label for="q-model">Producto de interés
+          <select id="q-model">
+            <option>Campanas domésticas</option><option>Campanas industriales</option><option>Estufas</option><option>Calentadores de agua</option><option>OEM / marca propia</option>
+          </select>
+        </label>
+        <label for="q-msg">Mensaje<textarea id="q-msg" rows="4"></textarea></label>
+        <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+        <p class="form-msg" id="q-out" hidden>Formulario de demostración: en la web real esta solicitud llegaría al correo de ventas.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986</span>
+    <span>Maqueta de propuesta, 2026</span>
+  </div>
+</footer>
+
+<a class="btn btn-wa wa-float" href="#contacto" aria-label="Contactar por WhatsApp">WhatsApp</a>
+
+<script>
+const hood='<svg viewBox="0 0 100 70" aria-hidden="true"><rect x="42" y="0" width="16" height="22" fill="currentColor" opacity=".3"/><path d="M10 50 L30 22 L70 22 L90 50Z" fill="currentColor" opacity=".55"/><rect x="6" y="50" width="88" height="9" rx="2" fill="currentColor"/></svg>';
+const stove='<svg viewBox="0 0 100 70" aria-hidden="true"><rect x="5" y="20" width="90" height="34" rx="4" fill="currentColor" opacity=".55"/><circle cx="30" cy="37" r="10" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="70" cy="37" r="10" fill="none" stroke="currentColor" stroke-width="4"/></svg>';
+const heater='<svg viewBox="0 0 100 70" aria-hidden="true"><rect x="30" y="2" width="40" height="62" rx="5" fill="currentColor" opacity=".55"/><rect x="40" y="14" width="20" height="10" rx="2" fill="currentColor"/><circle cx="50" cy="44" r="6" fill="currentColor"/></svg>';
+const fan='<svg viewBox="0 0 100 70" aria-hidden="true"><circle cx="50" cy="35" r="30" fill="none" stroke="currentColor" stroke-width="4" opacity=".7"/><path d="M50 35 L50 9 M50 35 L73 48 M50 35 L27 48" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity=".55"/></svg>';
+const P=[
+ {m:'TJ-82124',n:'Campana combinada acero inox 430 – 124/190 cm',s:'1240 × 820 × 500 mm',c:['campana'],i:hood,link:'#ficha'},
+ {m:'TJ-82124B',n:'Campana combinada acero inox – versión B',s:'Medidas por confirmar',c:['campana'],i:hood},
+ {m:'TJ-356',n:'Campana extractora de pared acero inox',s:'Medidas por confirmar',c:['campana'],i:hood},
+ {m:'TJ-1250',n:'Campana extractora de pared 125 cm',s:'Medidas por confirmar',c:['campana'],i:hood},
+ {m:'192CM',n:'Sistema de ventilación profesional de pared 192 cm',s:'Para cocinas profesionales',c:['campana','industrial'],i:hood,t:'Destacado'},
+ {m:'F102-1Q',n:'Campana extractora industrial',s:'Medidas por confirmar',c:['campana','industrial'],i:hood},
+ {m:'E-70252',n:'Estufa de gas industrial',s:'Nuevo modelo',c:['estufa','industrial'],i:stove,t:'Nuevo'},
+ {m:'TJ-16L',n:'Calentador de agua a gas 16 L',s:'Capacidad 16 L/min',c:['calentador'],i:heater},
+ {m:'TJ-13L',n:'Calentador de agua a gas 13 L',s:'Capacidad 13 L/min',c:['calentador'],i:heater},
+ {m:'TJ-12-B',n:'Calentador de agua a gas 12 L',s:'Capacidad 12 L/min',c:['calentador'],i:heater},
+ {m:'LY-12',n:'Ventilador centrífugo industrial',s:'Para extracción de humos',c:['industrial'],i:fan}
+];
+const grid=document.getElementById('grid');
+function render(f){
+  grid.innerHTML=P.filter(p=>f==='all'||p.c.includes(f)).map(p=>`
+   <article class="card"><div class="ph">${p.i}</div><div class="body">
+    ${p.t?`<span class="tag">${p.t}</span>`:''}
+    <span class="model">${p.m}</span><h3>${p.n}</h3><span class="spec">${p.s}</span>
+    <a class="more" href="${p.link||'#contacto'}">${p.link?'Ver ficha':'Pedir presupuesto'} →</a>
+   </div></article>`).join('');
+}
+render('all');
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  render(b.dataset.f);
+}));
+document.getElementById('quote').addEventListener('submit',e=>{e.preventDefault();document.getElementById('q-out').hidden=false;});
+</script>
+</body>
+</html>

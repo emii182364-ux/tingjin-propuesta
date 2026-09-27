@@ -81,9 +81,12 @@ nav a:hover{color:var(--accent)}
 .facts div{background:var(--surface);padding:14px 16px}
 .facts b{display:block;font:750 1.6rem/1 var(--display);font-stretch:80%;font-variant-numeric:tabular-nums}
 .facts span{font-size:.82rem;color:var(--muted)}
-.hero-art{background:#fff;border-radius:10px;padding:24px;aspect-ratio:5/4;display:grid;place-items:center;max-width:100%;border:1px solid var(--line)}
-.hero-art img{width:100%;max-height:340px;object-fit:contain}
-.hero-art figcaption{font:400 .75rem/1.3 var(--mono);color:var(--muted);margin-top:10px;text-align:center}
+.hero-art{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:100%}
+.hero-art .shot{background:#fff;border:1px solid var(--line);border-radius:10px;display:grid;grid-template-rows:1fr auto;overflow:hidden}
+.hero-art .shot.big{grid-column:1/-1}
+.hero-art img{width:100%;height:100%;object-fit:contain;padding:14px;aspect-ratio:16/9}
+.hero-art .shot:not(.big) img{aspect-ratio:4/3}
+.hero-art figcaption{font:500 .75rem/1.3 var(--mono);color:#56646B;padding:8px 12px;border-top:1px solid #E3E8EA;background:#F7F9FA}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
 
 /* líneas */
@@ -206,12 +209,11 @@ footer a{color:inherit}
         <div><b>OEM</b><span data-i18n="fact3"></span></div>
       </div>
     </div>
-    <figure class="hero-art" style="margin:0">
-      <div>
-        <img src="https://img.itaiwantrade.com/ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB.webp?d=960x960" data-i18n-alt="heroAlt" alt="" fetchpriority="high">
-        <figcaption data-i18n="heroCaption"></figcaption>
-      </div>
-    </figure>
+    <div class="hero-art">
+      <figure class="shot big" style="margin:0"><img src="https://img.itaiwantrade.com/3523c62d-5830-4feb-989f-2baba811b296/m28-3.webp?d=960x960" data-i18n-alt="hero1" alt="" fetchpriority="high"><figcaption data-i18n="hero1"></figcaption></figure>
+      <figure class="shot" style="margin:0"><img src="https://img.itaiwantrade.com/3acd615e-7e56-4fcd-8b49-a055e0a80704/0315-B.webp?d=480x480" data-i18n-alt="hero2" alt=""><figcaption data-i18n="hero2"></figcaption></figure>
+      <figure class="shot" style="margin:0"><img src="https://img.itaiwantrade.com/b8eb7b0e-eba9-499c-b484-0daff551543d/13LB-2.webp?d=480x480" data-i18n-alt="hero3" alt=""><figcaption data-i18n="hero3"></figcaption></figure>
+    </div>
   </div>
 </div>
 
@@ -363,6 +365,7 @@ footer a{color:inherit}
 <script>
 const T={
 es:{
+ hero1:'Campana de pared 90 cm · LED · acero inox',hero2:'Estufa de gas empotrable',hero3:'Calentador a gas 13 L',
  notice:'Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.',
  brandSub:'KITCHENWARE · DESDE 1986',
  navProducts:'Productos',navSheet:'Ficha de ejemplo',navOem:'OEM / marca propia',navCompany:'Empresa',navContact:'Contacto',
@@ -371,8 +374,6 @@ es:{
  heroLead:'Línea doméstica e industrial para importadores y distribuidores. Modelos estándar o con su propia marca, incluso en pedidos pequeños.',
  ctaQuote:'Pedir presupuesto',ctaCatalog:'Descargar catálogo PDF',
  fact1:'años fabricando',fact2:'acero inoxidable',fact3:'marca del cliente',
- heroAlt:'Campana extractora industrial Ting Jin de acero inoxidable, 190 cm',
- heroCaption:'Campana industrial TJ-R82190A · 190 cm. Mejor aún: una foto de la campana instalada o de la fábrica.',
  linesEyebrow:'Dos líneas de producto',linesTitle:'Doméstica e industrial, cada una para su comprador',
  homeTag:'Hogar',homeTitle:'Línea doméstica',
  homeList:'<li>Campanas de pared, isla y combinadas</li><li>Estufas de gas empotrables</li><li>Calentadores de agua a gas de 10 a 16 L</li>',
@@ -410,6 +411,7 @@ es:{
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986',foot2:'Maqueta de propuesta, 2026'
 },
 en:{
+ hero1:'90 cm wall hood · LED · stainless steel',hero2:'Built-in gas stove',hero3:'Gas water heater, 13 L',
  notice:'Proposal mockup for Ting Jin Kitchenware. This is not the official website. Photos come from the current Taiwantrade store. Items highlighted in yellow must be filled in by the company.',
  brandSub:'KITCHENWARE · SINCE 1986',
  navProducts:'Products',navSheet:'Sample product page',navOem:'OEM / private label',navCompany:'Company',navContact:'Contact',
@@ -418,8 +420,6 @@ en:{
  heroLead:'Household and commercial lines for importers and distributors. Standard models or your own brand, even on small orders.',
  ctaQuote:'Request a quote',ctaCatalog:'Download PDF catalog',
  fact1:'years in production',fact2:'stainless steel',fact3:'your brand',
- heroAlt:'Ting Jin 190 cm stainless steel commercial range hood',
- heroCaption:'Commercial hood TJ-R82190A · 190 cm. Even better: a photo of an installed hood or the factory.',
  linesEyebrow:'Two product lines',linesTitle:'Household and commercial, each for its own buyer',
  homeTag:'Household',homeTitle:'Household line',
  homeList:'<li>Wall-mounted, island and combination hoods</li><li>Built-in gas stoves</li><li>Gas water heaters, 10 to 16 L</li>',
@@ -457,6 +457,7 @@ en:{
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwan · since 1986',foot2:'Proposal mockup, 2026'
 },
 zh:{
+ hero1:'90 公分壁掛式排油煙機 · LED · 不鏽鋼',hero2:'崁入式瓦斯爐',hero3:'13 公升瓦斯熱水器',
  notice:'此為 Ting Jin Kitchenware 網站改版提案樣稿，並非官方網站。圖片取自目前的台灣經貿網商店，黃色標示處需由貴公司補充資料。',
  brandSub:'KITCHENWARE · 1986 年創立',
  navProducts:'產品',navSheet:'產品頁範例',navOem:'OEM 代工',navCompany:'關於我們',navContact:'聯絡我們',
@@ -465,8 +466,6 @@ zh:{
  heroLead:'家用與營業用兩大產品線，服務進口商與經銷商。標準款或客製品牌皆可，小量訂單亦可接受。',
  ctaQuote:'立即詢價',ctaCatalog:'下載 PDF 型錄',
  fact1:'年製造經驗',fact2:'不鏽鋼',fact3:'客戶自有品牌',
- heroAlt:'Ting Jin 190 公分不鏽鋼營業用排油煙機',
- heroCaption:'營業用排油煙機 TJ-R82190A · 190 公分。建議改用安裝實景或工廠照片。',
  linesEyebrow:'兩大產品線',linesTitle:'家用與營業用，各自對應不同買家',
  homeTag:'家用',homeTitle:'家用系列',
  homeList:'<li>壁掛式、中島式及組合式排油煙機</li><li>崁入式瓦斯爐</li><li>10 至 16 公升瓦斯熱水器</li>',

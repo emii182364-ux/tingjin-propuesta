@@ -8,14 +8,14 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <style>
 :root{
   --bg:#F3F5F6; --surface:#FFFFFF; --steel:#DDE3E6; --line:#C9D1D5;
   --ink:#172126; --muted:#56646B; --accent:#0E5A6B; --accent-ink:#FFFFFF;
   --flame:#E0662A; --wa:#1F9D55; --note:#FFF4D6; --note-ink:#6B4A00;
-  --display:"Archivo","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Archivo","Noto Sans TC","PingFang TC","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   --gutter:clamp(16px,4vw,40px); --max:1160px;
   color-scheme:light;
@@ -67,7 +67,7 @@ nav a:hover{color:var(--accent)}
 .btn-primary{background:var(--accent);color:var(--accent-ink)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
 .btn-wa{background:var(--wa);color:#fff}
-@media (max-width:760px){nav{display:none}.bar .btn-wa{margin-left:auto}}
+@media (max-width:760px){nav{display:none}.langs{margin-left:auto}}
 @media (max-width:420px){.brand span{display:none}}
 
 /* hero */
@@ -127,7 +127,7 @@ nav a:hover{color:var(--accent)}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:32px;counter-reset:s;list-style:none;padding:0}
 .steps li{padding:20px 20px 20px 0;border-top:3px solid var(--accent);counter-increment:s;display:grid;gap:6px}
 .steps li+li{padding-left:20px;border-left:1px solid var(--line)}
-.steps li::before{content:"Paso " counter(s);font:500 .75rem var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.steps li::before{content:attr(data-label);font:500 .75rem var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
 .steps p{margin:0;color:var(--muted);font-size:.92rem}
 @media (max-width:860px){.steps{grid-template-columns:1fr 1fr}.steps li:nth-child(3){padding-left:0;border-left:0}}
 @media (max-width:480px){.steps{grid-template-columns:1fr}.steps li,.steps li+li{padding-left:0;border-left:0}}
@@ -156,24 +156,35 @@ footer{background:var(--ink);color:var(--bg);padding-block:32px;font-size:.88rem
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:inherit}
 
+.langs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;flex:none}
+.langs button{font:500 .82rem var(--body);background:var(--surface);color:var(--muted);border:0;padding:8px 10px;cursor:pointer}
+.langs button+button{border-left:1px solid var(--line)}
+.langs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+:lang(zh-Hant-TW) h1,:lang(zh-Hant-TW) h2,:lang(zh-Hant-TW) h3{font-stretch:100%;line-height:1.25;letter-spacing:.02em}
+:lang(zh-Hant-TW) .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
+:lang(zh-Hant-TW) body{line-height:1.8}
 .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 20px rgb(0 0 0 / .2);border-radius:999px;padding:13px 18px}
 </style>
 </head>
 <body>
 
-<div class="notice">Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.</div>
+<div class="notice" data-i18n="notice"></div>
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#inicio"><b>TING JIN</b><span>KITCHENWARE · DESDE 1986</span></a>
-    <nav aria-label="Principal">
-      <a href="#lineas">Productos</a>
-      <a href="#ficha">Ficha de ejemplo</a>
-      <a href="#oem">OEM / marca propia</a>
-      <a href="#empresa">Empresa</a>
-      <a href="#contacto">Contacto</a>
+    <a class="brand" href="#inicio"><b>TING JIN</b><span data-i18n="brandSub"></span></a>
+    <nav aria-label="Menu">
+      <a href="#lineas" data-i18n="navProducts"></a>
+      <a href="#ficha" data-i18n="navSheet"></a>
+      <a href="#oem" data-i18n="navOem"></a>
+      <a href="#empresa" data-i18n="navCompany"></a>
+      <a href="#contacto" data-i18n="navContact"></a>
     </nav>
-    <a class="btn btn-wa" href="#contacto">WhatsApp</a>
+    <div class="langs" role="group" aria-label="Idioma / Language / 語言">
+      <button type="button" data-lang="zh" lang="zh-Hant-TW">中文</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="es" lang="es">ES</button>
+    </div>
   </div>
 </header>
 
@@ -182,23 +193,23 @@ footer a{color:inherit}
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Fabricante en Taiwán · OEM · ODM</p>
-      <h1>Campanas extractoras y estufas de <em>acero inoxidable</em>, fabricadas desde 1986</h1>
-      <p class="lead">Línea doméstica e industrial para importadores y distribuidores de Latinoamérica. Modelos estándar o con su propia marca, incluso en pedidos pequeños.</p>
+      <p class="eyebrow" data-i18n="heroEyebrow"></p>
+      <h1 data-i18n="heroTitle"></h1>
+      <p class="lead" data-i18n="heroLead"></p>
       <div class="cta">
-        <a class="btn btn-primary" href="#contacto">Pedir presupuesto</a>
-        <a class="btn btn-ghost" href="#contacto">Descargar catálogo PDF</a>
+        <a class="btn btn-primary" href="#contacto" data-i18n="ctaQuote"></a>
+        <a class="btn btn-ghost" href="#contacto" data-i18n="ctaCatalog"></a>
       </div>
       <div class="facts">
-        <div><b>40</b><span>años fabricando</span></div>
-        <div><b>AISI 430</b><span>acero inoxidable</span></div>
-        <div><b>OEM</b><span>marca del cliente</span></div>
+        <div><b>40</b><span data-i18n="fact1"></span></div>
+        <div><b>AISI 430</b><span data-i18n="fact2"></span></div>
+        <div><b>OEM</b><span data-i18n="fact3"></span></div>
       </div>
     </div>
     <figure class="hero-art" style="margin:0">
       <div>
-        <img src="https://img.itaiwantrade.com/ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB.webp?d=960x960" alt="Campana extractora industrial Ting Jin de acero inoxidable, 190 cm" fetchpriority="high">
-        <figcaption>Campana industrial TJ-R82190A · 190 cm. Mejor aún: una foto de la campana instalada o de la fábrica.</figcaption>
+        <img src="https://img.itaiwantrade.com/ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB.webp?d=960x960" data-i18n-alt="heroAlt" alt="" fetchpriority="high">
+        <figcaption data-i18n="heroCaption"></figcaption>
       </div>
     </figure>
   </div>
@@ -206,37 +217,29 @@ footer a{color:inherit}
 
 <section id="lineas">
   <div class="wrap">
-    <p class="eyebrow">Dos líneas de producto</p>
-    <h2>Doméstica e industrial, cada una para su comprador</h2>
+    <p class="eyebrow" data-i18n="linesEyebrow"></p>
+    <h2 data-i18n="linesTitle"></h2>
     <div class="lines">
       <div class="line-card">
-        <span class="tag">Hogar</span>
-        <h3>Línea doméstica</h3>
-        <ul>
-          <li>Campanas de pared, isla y combinadas</li>
-          <li>Estufas de gas empotrables</li>
-          <li>Calentadores de agua a gas de 10 a 16 L</li>
-        </ul>
-        <p class="for">Para distribuidores de electrodomésticos, constructoras y tiendas de cocina.</p>
+        <span class="tag" data-i18n="homeTag"></span>
+        <h3 data-i18n="homeTitle"></h3>
+        <ul data-i18n="homeList"></ul>
+        <p class="for" data-i18n="homeFor"></p>
       </div>
       <div class="line-card">
-        <span class="tag">Restaurantes</span>
-        <h3>Línea industrial</h3>
-        <ul>
-          <li>Campanas extractoras industriales hasta 192 cm</li>
-          <li>Estufas de gas industriales</li>
-          <li>Ventiladores centrífugos</li>
-        </ul>
-        <p class="for">Para equipadores de cocinas profesionales, hoteles y restaurantes.</p>
+        <span class="tag" data-i18n="indTag"></span>
+        <h3 data-i18n="indTitle"></h3>
+        <ul data-i18n="indList"></ul>
+        <p class="for" data-i18n="indFor"></p>
       </div>
     </div>
 
-    <div class="filters" role="group" aria-label="Filtrar productos">
-      <button class="chip" type="button" data-f="all" aria-pressed="true">Todos</button>
-      <button class="chip" type="button" data-f="campana" aria-pressed="false">Campanas</button>
-      <button class="chip" type="button" data-f="estufa" aria-pressed="false">Estufas</button>
-      <button class="chip" type="button" data-f="calentador" aria-pressed="false">Calentadores</button>
-      <button class="chip" type="button" data-f="industrial" aria-pressed="false">Industrial</button>
+    <div class="filters" role="group">
+      <button class="chip" type="button" data-f="all" aria-pressed="true" data-i18n="fAll"></button>
+      <button class="chip" type="button" data-f="campana" aria-pressed="false" data-i18n="fHood"></button>
+      <button class="chip" type="button" data-f="estufa" aria-pressed="false" data-i18n="fStove"></button>
+      <button class="chip" type="button" data-f="calentador" aria-pressed="false" data-i18n="fHeater"></button>
+      <button class="chip" type="button" data-f="industrial" aria-pressed="false" data-i18n="fInd"></button>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -244,36 +247,36 @@ footer a{color:inherit}
 
 <section id="ficha">
   <div class="wrap">
-    <p class="eyebrow">Ficha de producto · ejemplo</p>
-    <h2>Campana extractora combinada de acero inoxidable 430 – 124 y 190 cm</h2>
-    <p class="lead">Así debería verse cada ficha: nombre que describe el producto, datos técnicos completos y condiciones comerciales a la vista.</p>
+    <p class="eyebrow" data-i18n="sheetEyebrow"></p>
+    <h2 data-i18n="sheetTitle"></h2>
+    <p class="lead" data-i18n="sheetLead"></p>
     <div class="detail">
       <div class="gallery">
-        <div class="main"><img src="https://img.itaiwantrade.com/ca6f90a3-ca14-470f-ae4e-af7b75d6f86a/0908-2.webp?d=960x960" alt="Campana extractora combinada TJ-82124 de acero inoxidable 430"></div>
+        <div class="main"><img src="https://img.itaiwantrade.com/ca6f90a3-ca14-470f-ae4e-af7b75d6f86a/0908-2.webp?d=960x960" data-i18n-alt="sheetAlt" alt=""></div>
         <div class="thumbs">
-          <div>Foto sugerida: frontal</div><div>Foto sugerida: filtro</div><div>Foto sugerida: instalada</div><div>Foto sugerida: embalaje</div>
+          <div data-i18n="th1"></div><div data-i18n="th2"></div><div data-i18n="th3"></div><div data-i18n="th4"></div>
         </div>
       </div>
       <div>
-        <p class="mono" style="margin:0;color:var(--accent)">Modelo TJ-82124 · Hecho en Taiwán</p>
+        <p class="mono" style="margin:0;color:var(--accent)" data-i18n="sheetModel"></p>
         <div class="table-wrap">
         <table class="spec-table">
-          <tr><th>Material</th><td>Acero inoxidable AISI 430</td></tr>
-          <tr><th>Medidas 124 cm</th><td>1240 × 820 × 500 mm</td></tr>
-          <tr><th>Medidas 190 cm</th><td>1900 × 820 × 500 mm</td></tr>
-          <tr><th>Caudal de aspiración</th><td><span class="todo">completar</span> m³/h</td></tr>
-          <tr><th>Ruido</th><td><span class="todo">completar</span> dB</td></tr>
-          <tr><th>Voltaje</th><td>110 V / 220 V <span class="todo">confirmar</span></td></tr>
-          <tr><th>Pedido mínimo</th><td><span class="todo">completar</span> unidades</td></tr>
-          <tr><th>Plazo de producción</th><td><span class="todo">completar</span> días</td></tr>
-          <tr><th>Unidades por contenedor 20′ / 40′</th><td><span class="todo">completar</span></td></tr>
-          <tr><th>Condiciones</th><td>FOB Taiwán · T/T <span class="todo">confirmar</span></td></tr>
-          <tr><th>Marca propia (OEM)</th><td>Disponible</td></tr>
+          <tr><th data-i18n="kMat"></th><td data-i18n="vMat"></td></tr>
+          <tr><th data-i18n="kDim124"></th><td>1240 × 820 × 500 mm</td></tr>
+          <tr><th data-i18n="kDim190"></th><td>1900 × 820 × 500 mm</td></tr>
+          <tr><th data-i18n="kFlow"></th><td><span class="todo" data-i18n="todoFill"></span> m³/h</td></tr>
+          <tr><th data-i18n="kNoise"></th><td><span class="todo" data-i18n="todoFill"></span> dB</td></tr>
+          <tr><th data-i18n="kVolt"></th><td>110 V / 220 V <span class="todo" data-i18n="todoConfirm"></span></td></tr>
+          <tr><th data-i18n="kMoq"></th><td><span class="todo" data-i18n="todoFill"></span> <span data-i18n="uUnits"></span></td></tr>
+          <tr><th data-i18n="kLead"></th><td><span class="todo" data-i18n="todoFill"></span> <span data-i18n="uDays"></span></td></tr>
+          <tr><th data-i18n="kCont"></th><td><span class="todo" data-i18n="todoFill"></span></td></tr>
+          <tr><th data-i18n="kTerms"></th><td>FOB Taiwan · T/T <span class="todo" data-i18n="todoConfirm"></span></td></tr>
+          <tr><th data-i18n="kOem"></th><td data-i18n="vOem"></td></tr>
         </table>
         </div>
         <div class="cta">
-          <a class="btn btn-primary" href="#contacto">Pedir presupuesto de este modelo</a>
-          <a class="btn btn-ghost" href="#contacto">Ficha técnica PDF</a>
+          <a class="btn btn-primary" href="#contacto" data-i18n="ctaQuoteModel"></a>
+          <a class="btn btn-ghost" href="#contacto" data-i18n="ctaPdf"></a>
         </div>
       </div>
     </div>
@@ -282,36 +285,34 @@ footer a{color:inherit}
 
 <section id="oem">
   <div class="wrap">
-    <p class="eyebrow">OEM / marca propia</p>
-    <h2>Su marca en nuestras campanas, desde pedidos pequeños</h2>
-    <p class="lead">Fabricamos modelos estándar con su logo o desarrollamos un diseño a medida con nuestro equipo de ingeniería.</p>
+    <p class="eyebrow" data-i18n="navOem"></p>
+    <h2 data-i18n="oemTitle"></h2>
+    <p class="lead" data-i18n="oemLead"></p>
     <ol class="steps">
-      <li><h3>Consulta</h3><p>Nos cuenta qué modelos, cantidades y mercado. Respondemos en 24 h.</p></li>
-      <li><h3>Muestra</h3><p>Enviamos muestra con su marca para aprobar acabado y embalaje.</p></li>
-      <li><h3>Producción</h3><p>Fabricación y control de calidad en planta. Plazo <span class="todo">completar</span> días.</p></li>
-      <li><h3>Envío</h3><p>Carga en contenedor FOB puerto de Taiwán, con documentación de exportación.</p></li>
+      <li data-step="1"><h3 data-i18n="s1t"></h3><p data-i18n="s1p"></p></li>
+      <li data-step="2"><h3 data-i18n="s2t"></h3><p data-i18n="s2p"></p></li>
+      <li data-step="3"><h3 data-i18n="s3t"></h3><p data-i18n="s3p"></p></li>
+      <li data-step="4"><h3 data-i18n="s4t"></h3><p data-i18n="s4p"></p></li>
     </ol>
   </div>
 </section>
 
 <section id="empresa">
   <div class="wrap">
-    <p class="eyebrow">Empresa</p>
-    <h2>Cuatro décadas en acero inoxidable</h2>
+    <p class="eyebrow" data-i18n="navCompany"></p>
+    <h2 data-i18n="coTitle"></h2>
     <div class="trust">
       <div>
-        <h3>Desde 1986</h3>
-        <p>Fabricante, OEM y ODM. Equipo propio de ingenieros para modelos estándar y diseños personalizados.</p>
+        <h3 data-i18n="coSince"></h3>
+        <p data-i18n="coSinceP"></p>
       </div>
       <div>
-        <h3>Exportamos a</h3>
-        <div class="markets">
-          <span class="tag">República Dominicana</span><span class="tag">Panamá</span><span class="tag">Paraguay</span><span class="tag">Estados Unidos</span><span class="tag">Hong Kong</span><span class="tag">Tailandia</span>
-        </div>
+        <h3 data-i18n="coExport"></h3>
+        <div class="markets" data-i18n="coMarkets"></div>
       </div>
       <div>
-        <h3>Certificaciones</h3>
-        <p>D-U-N-S® · Proveedor e-Portal Taiwantrade · <span class="todo">añadir normas de gas, CE, ISO</span></p>
+        <h3 data-i18n="coCert"></h3>
+        <p data-i18n="coCertP"></p>
       </div>
     </div>
   </div>
@@ -319,32 +320,30 @@ footer a{color:inherit}
 
 <section id="contacto">
   <div class="wrap">
-    <p class="eyebrow">Contacto</p>
-    <h2>Pida presupuesto y le respondemos en español</h2>
+    <p class="eyebrow" data-i18n="navContact"></p>
+    <h2 data-i18n="ctTitle"></h2>
     <div class="contact">
       <div class="channels">
-        <div class="channel"><div><b>WhatsApp</b><span>+886 <span class="todo">número</span></span></div><a class="btn btn-wa" href="#contacto">Escribir</a></div>
-        <div class="channel"><div><b>Correo</b><span><span class="todo">ventas@…</span></span></div></div>
-        <div class="channel"><div><b>Taiwantrade</b><span>tingjin.es.taiwantrade.com</span></div><a class="btn btn-ghost" href="https://tingjin.es.taiwantrade.com/" target="_blank" rel="noopener">Ver tienda</a></div>
-        <div class="channel"><div><b>Horario</b><span>Lun–Vie 9:00–18:00 (hora de Taiwán, GMT+8)</span></div></div>
+        <div class="channel"><div><b data-i18n="ctChat"></b><span>+886 <span class="todo" data-i18n="todoNumber"></span></span></div><a class="btn btn-wa" href="#contacto" data-i18n="ctWrite"></a></div>
+        <div class="channel"><div><b data-i18n="ctMail"></b><span><span class="todo">sales@…</span></span></div></div>
+        <div class="channel"><div><b>Taiwantrade</b><span>tingjin.taiwantrade.com</span></div><a class="btn btn-ghost" href="https://tingjin.es.taiwantrade.com/" target="_blank" rel="noopener" data-i18n="ctStore"></a></div>
+        <div class="channel"><div><b data-i18n="ctHours"></b><span data-i18n="ctHoursV"></span></div></div>
       </div>
       <form id="quote">
         <div class="row2">
-          <label for="q-name">Nombre<input id="q-name" required autocomplete="name"></label>
-          <label for="q-company">Empresa<input id="q-company" autocomplete="organization"></label>
+          <label for="q-name"><span data-i18n="fName"></span><input id="q-name" required autocomplete="name"></label>
+          <label for="q-company"><span data-i18n="fCompany"></span><input id="q-company" autocomplete="organization"></label>
         </div>
         <div class="row2">
-          <label for="q-country">País<input id="q-country" autocomplete="country-name"></label>
-          <label for="q-qty">Cantidad aproximada<input id="q-qty" inputmode="numeric"></label>
+          <label for="q-country"><span data-i18n="fCountry"></span><input id="q-country" autocomplete="country-name"></label>
+          <label for="q-qty"><span data-i18n="fQty"></span><input id="q-qty" inputmode="numeric"></label>
         </div>
-        <label for="q-model">Producto de interés
-          <select id="q-model">
-            <option>Campanas domésticas</option><option>Campanas industriales</option><option>Estufas</option><option>Calentadores de agua</option><option>OEM / marca propia</option>
-          </select>
+        <label for="q-model"><span data-i18n="fProduct"></span>
+          <select id="q-model" data-i18n="fOptions"></select>
         </label>
-        <label for="q-msg">Mensaje<textarea id="q-msg" rows="4"></textarea></label>
-        <button class="btn btn-primary" type="submit">Enviar solicitud</button>
-        <p class="form-msg" id="q-out" hidden>Formulario de demostración: en la web real esta solicitud llegaría al correo de ventas.</p>
+        <label for="q-msg"><span data-i18n="fMsg"></span><textarea id="q-msg" rows="4"></textarea></label>
+        <button class="btn btn-primary" type="submit" data-i18n="fSend"></button>
+        <p class="form-msg" id="q-out" hidden data-i18n="fDemo"></p>
       </form>
     </div>
   </div>
@@ -354,42 +353,207 @@ footer a{color:inherit}
 
 <footer>
   <div class="wrap">
-    <span>TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986</span>
-    <span>Maqueta de propuesta, 2026</span>
+    <span data-i18n="foot1"></span>
+    <span data-i18n="foot2"></span>
   </div>
 </footer>
 
-<a class="btn btn-wa wa-float" href="#contacto" aria-label="Contactar por WhatsApp">WhatsApp</a>
+<a class="btn btn-wa wa-float" href="#contacto" data-i18n="ctChat"></a>
 
 <script>
+const T={
+es:{
+ notice:'Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.',
+ brandSub:'KITCHENWARE · DESDE 1986',
+ navProducts:'Productos',navSheet:'Ficha de ejemplo',navOem:'OEM / marca propia',navCompany:'Empresa',navContact:'Contacto',
+ heroEyebrow:'Fabricante en Taiwán · OEM · ODM',
+ heroTitle:'Campanas extractoras y estufas de <em>acero inoxidable</em>, fabricadas desde 1986',
+ heroLead:'Línea doméstica e industrial para importadores y distribuidores. Modelos estándar o con su propia marca, incluso en pedidos pequeños.',
+ ctaQuote:'Pedir presupuesto',ctaCatalog:'Descargar catálogo PDF',
+ fact1:'años fabricando',fact2:'acero inoxidable',fact3:'marca del cliente',
+ heroAlt:'Campana extractora industrial Ting Jin de acero inoxidable, 190 cm',
+ heroCaption:'Campana industrial TJ-R82190A · 190 cm. Mejor aún: una foto de la campana instalada o de la fábrica.',
+ linesEyebrow:'Dos líneas de producto',linesTitle:'Doméstica e industrial, cada una para su comprador',
+ homeTag:'Hogar',homeTitle:'Línea doméstica',
+ homeList:'<li>Campanas de pared, isla y combinadas</li><li>Estufas de gas empotrables</li><li>Calentadores de agua a gas de 10 a 16 L</li>',
+ homeFor:'Para distribuidores de electrodomésticos, constructoras y tiendas de cocina.',
+ indTag:'Restaurantes',indTitle:'Línea industrial',
+ indList:'<li>Campanas extractoras industriales hasta 192 cm</li><li>Estufas de gas industriales</li><li>Ventiladores industriales</li>',
+ indFor:'Para equipadores de cocinas profesionales, hoteles y restaurantes.',
+ fAll:'Todos',fHood:'Campanas',fStove:'Estufas',fHeater:'Calentadores',fInd:'Industrial',
+ model:'Modelo',noModel:'Modelo por confirmar',seeSheet:'Ver ficha de ejemplo',seeStore:'Ver en Taiwantrade',featured:'Destacado',
+ sheetEyebrow:'Ficha de producto · ejemplo',
+ sheetTitle:'Campana extractora combinada de acero inoxidable 430 – 124 y 190 cm',
+ sheetLead:'Así debería verse cada ficha: nombre que describe el producto, datos técnicos completos y condiciones comerciales a la vista.',
+ sheetAlt:'Campana extractora combinada TJ-82124 de acero inoxidable 430',
+ th1:'Foto sugerida: frontal',th2:'Foto sugerida: filtro',th3:'Foto sugerida: instalada',th4:'Foto sugerida: embalaje',
+ sheetModel:'Modelo TJ-82124 · Hecho en Taiwán',
+ kMat:'Material',vMat:'Acero inoxidable AISI 430',kDim124:'Medidas 124 cm',kDim190:'Medidas 190 cm',kFlow:'Caudal de aspiración',kNoise:'Ruido',kVolt:'Voltaje',kMoq:'Pedido mínimo',kLead:'Plazo de producción',kCont:'Unidades por contenedor 20′ / 40′',kTerms:'Condiciones',kOem:'Marca propia (OEM)',vOem:'Disponible',
+ todoFill:'completar',todoConfirm:'confirmar',todoNumber:'número',uUnits:'unidades',uDays:'días',
+ ctaQuoteModel:'Pedir presupuesto de este modelo',ctaPdf:'Ficha técnica PDF',
+ oemTitle:'Su marca en nuestras campanas, desde pedidos pequeños',
+ oemLead:'Fabricamos modelos estándar con su logo o desarrollamos un diseño a medida con nuestro equipo de ingeniería.',
+ step:'Paso',
+ s1t:'Consulta',s1p:'Nos cuenta qué modelos, cantidades y mercado. Respondemos en 24 h.',
+ s2t:'Muestra',s2p:'Enviamos muestra con su marca para aprobar acabado y embalaje.',
+ s3t:'Producción',s3p:'Fabricación y control de calidad en planta. Plazo <span class="todo">completar</span> días.',
+ s4t:'Envío',s4p:'Carga en contenedor FOB puerto de Taiwán, con documentación de exportación.',
+ coTitle:'Cuatro décadas en acero inoxidable',coSince:'Desde 1986',
+ coSinceP:'Fabricante, OEM y ODM. Equipo propio de ingenieros para modelos estándar y diseños personalizados.',
+ coExport:'Exportamos a',
+ coMarkets:'<span class="tag">República Dominicana</span><span class="tag">Panamá</span><span class="tag">Paraguay</span><span class="tag">Estados Unidos</span><span class="tag">Hong Kong</span><span class="tag">Tailandia</span>',
+ coCert:'Certificaciones',coCertP:'D-U-N-S® · Proveedor e-Portal Taiwantrade · <span class="todo">añadir normas de gas, CE, ISO</span>',
+ ctTitle:'Pida presupuesto y le respondemos en español',ctChat:'WhatsApp',ctWrite:'Escribir',ctMail:'Correo',ctStore:'Ver tienda',ctHours:'Horario',ctHoursV:'Lun–Vie 9:00–18:00 (hora de Taiwán, GMT+8)',
+ fName:'Nombre',fCompany:'Empresa',fCountry:'País',fQty:'Cantidad aproximada',fProduct:'Producto de interés',fMsg:'Mensaje',fSend:'Enviar solicitud',
+ fOptions:'<option>Campanas domésticas</option><option>Campanas industriales</option><option>Estufas</option><option>Calentadores de agua</option><option>OEM / marca propia</option>',
+ fDemo:'Formulario de demostración: en la web real esta solicitud llegaría al correo de ventas.',
+ foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986',foot2:'Maqueta de propuesta, 2026'
+},
+en:{
+ notice:'Proposal mockup for Ting Jin Kitchenware. This is not the official website. Photos come from the current Taiwantrade store. Items highlighted in yellow must be filled in by the company.',
+ brandSub:'KITCHENWARE · SINCE 1986',
+ navProducts:'Products',navSheet:'Sample product page',navOem:'OEM / private label',navCompany:'Company',navContact:'Contact',
+ heroEyebrow:'Made in Taiwan · OEM · ODM',
+ heroTitle:'<em>Stainless steel</em> range hoods and gas stoves, made since 1986',
+ heroLead:'Household and commercial lines for importers and distributors. Standard models or your own brand, even on small orders.',
+ ctaQuote:'Request a quote',ctaCatalog:'Download PDF catalog',
+ fact1:'years in production',fact2:'stainless steel',fact3:'your brand',
+ heroAlt:'Ting Jin 190 cm stainless steel commercial range hood',
+ heroCaption:'Commercial hood TJ-R82190A · 190 cm. Even better: a photo of an installed hood or the factory.',
+ linesEyebrow:'Two product lines',linesTitle:'Household and commercial, each for its own buyer',
+ homeTag:'Household',homeTitle:'Household line',
+ homeList:'<li>Wall-mounted, island and combination hoods</li><li>Built-in gas stoves</li><li>Gas water heaters, 10 to 16 L</li>',
+ homeFor:'For appliance distributors, builders and kitchen retailers.',
+ indTag:'Food service',indTitle:'Commercial line',
+ indList:'<li>Commercial range hoods up to 192 cm</li><li>Commercial gas stoves</li><li>Industrial fans</li>',
+ indFor:'For commercial kitchen contractors, hotels and restaurants.',
+ fAll:'All',fHood:'Range hoods',fStove:'Stoves',fHeater:'Water heaters',fInd:'Commercial',
+ model:'Model',noModel:'Model to be confirmed',seeSheet:'See sample page',seeStore:'View on Taiwantrade',featured:'Featured',
+ sheetEyebrow:'Product page · sample',
+ sheetTitle:'Combination range hood, 430 stainless steel – 124 and 190 cm',
+ sheetLead:'Every product page should look like this: a descriptive name, full specifications and trade terms up front.',
+ sheetAlt:'TJ-82124 combination range hood in 430 stainless steel',
+ th1:'Suggested photo: front',th2:'Suggested photo: filter',th3:'Suggested photo: installed',th4:'Suggested photo: packaging',
+ sheetModel:'Model TJ-82124 · Made in Taiwan',
+ kMat:'Material',vMat:'AISI 430 stainless steel',kDim124:'Size, 124 cm',kDim190:'Size, 190 cm',kFlow:'Airflow',kNoise:'Noise',kVolt:'Voltage',kMoq:'MOQ',kLead:'Lead time',kCont:'Units per 20′ / 40′ container',kTerms:'Terms',kOem:'Private label (OEM)',vOem:'Available',
+ todoFill:'to fill in',todoConfirm:'to confirm',todoNumber:'number',uUnits:'units',uDays:'days',
+ ctaQuoteModel:'Request a quote for this model',ctaPdf:'PDF spec sheet',
+ oemTitle:'Your brand on our hoods, from small orders',
+ oemLead:'We build standard models with your logo, or develop a custom design with our engineering team.',
+ step:'Step',
+ s1t:'Inquiry',s1p:'Tell us the models, quantities and market. We reply within 24 hours.',
+ s2t:'Sample',s2p:'We ship a branded sample so you can approve finish and packaging.',
+ s3t:'Production',s3p:'Manufacturing and in-house quality control. Lead time <span class="todo">to fill in</span> days.',
+ s4t:'Shipping',s4p:'Container loading FOB Taiwan port, with full export documents.',
+ coTitle:'Four decades of stainless steel',coSince:'Since 1986',
+ coSinceP:'Manufacturer, OEM and ODM. In-house engineers for standard and custom designs.',
+ coExport:'We export to',
+ coMarkets:'<span class="tag">Dominican Republic</span><span class="tag">Panama</span><span class="tag">Paraguay</span><span class="tag">United States</span><span class="tag">Hong Kong</span><span class="tag">Thailand</span>',
+ coCert:'Certifications',coCertP:'D-U-N-S® · Taiwantrade e-Portal supplier · <span class="todo">add gas standards, CE, ISO</span>',
+ ctTitle:'Request a quote. We reply in English, Spanish and Chinese',ctChat:'WhatsApp',ctWrite:'Message us',ctMail:'Email',ctStore:'Visit store',ctHours:'Office hours',ctHoursV:'Mon–Fri 9:00–18:00 (Taiwan time, GMT+8)',
+ fName:'Name',fCompany:'Company',fCountry:'Country',fQty:'Approx. quantity',fProduct:'Product of interest',fMsg:'Message',fSend:'Send request',
+ fOptions:'<option>Household range hoods</option><option>Commercial range hoods</option><option>Stoves</option><option>Water heaters</option><option>OEM / private label</option>',
+ fDemo:'Demo form: on the real site this request would go to the sales inbox.',
+ foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwan · since 1986',foot2:'Proposal mockup, 2026'
+},
+zh:{
+ notice:'此為 Ting Jin Kitchenware 網站改版提案樣稿，並非官方網站。圖片取自目前的台灣經貿網商店，黃色標示處需由貴公司補充資料。',
+ brandSub:'KITCHENWARE · 1986 年創立',
+ navProducts:'產品',navSheet:'產品頁範例',navOem:'OEM 代工',navCompany:'關於我們',navContact:'聯絡我們',
+ heroEyebrow:'台灣製造 · OEM · ODM',
+ heroTitle:'<em>不鏽鋼</em>排油煙機與瓦斯爐，1986 年起專業製造',
+ heroLead:'家用與營業用兩大產品線，服務進口商與經銷商。標準款或客製品牌皆可，小量訂單亦可接受。',
+ ctaQuote:'立即詢價',ctaCatalog:'下載 PDF 型錄',
+ fact1:'年製造經驗',fact2:'不鏽鋼',fact3:'客戶自有品牌',
+ heroAlt:'Ting Jin 190 公分不鏽鋼營業用排油煙機',
+ heroCaption:'營業用排油煙機 TJ-R82190A · 190 公分。建議改用安裝實景或工廠照片。',
+ linesEyebrow:'兩大產品線',linesTitle:'家用與營業用，各自對應不同買家',
+ homeTag:'家用',homeTitle:'家用系列',
+ homeList:'<li>壁掛式、中島式及組合式排油煙機</li><li>崁入式瓦斯爐</li><li>10 至 16 公升瓦斯熱水器</li>',
+ homeFor:'適合家電經銷商、建商及廚具行。',
+ indTag:'餐飲業',indTitle:'營業用系列',
+ indList:'<li>營業用排油煙機，最大 192 公分</li><li>營業用瓦斯爐</li><li>工業用電扇</li>',
+ indFor:'適合商業廚房工程商、飯店及餐廳。',
+ fAll:'全部',fHood:'排油煙機',fStove:'瓦斯爐',fHeater:'熱水器',fInd:'營業用',
+ model:'型號',noModel:'型號待確認',seeSheet:'查看範例頁',seeStore:'前往台灣經貿網',featured:'精選',
+ sheetEyebrow:'產品頁 · 範例',
+ sheetTitle:'430 不鏽鋼組合式排油煙機 – 124 及 190 公分',
+ sheetLead:'每個產品頁都應如此呈現：清楚的品名、完整規格，以及一目了然的交易條件。',
+ sheetAlt:'TJ-82124 430 不鏽鋼組合式排油煙機',
+ th1:'建議照片：正面',th2:'建議照片：濾網',th3:'建議照片：安裝實景',th4:'建議照片：包裝',
+ sheetModel:'型號 TJ-82124 · 台灣製造',
+ kMat:'材質',vMat:'AISI 430 不鏽鋼',kDim124:'尺寸（124 公分）',kDim190:'尺寸（190 公分）',kFlow:'排風量',kNoise:'噪音',kVolt:'電壓',kMoq:'最低訂購量',kLead:'生產交期',kCont:'20 呎／40 呎貨櫃裝載量',kTerms:'交易條件',kOem:'OEM 自有品牌',vOem:'可接受',
+ todoFill:'待補充',todoConfirm:'待確認',todoNumber:'號碼',uUnits:'台',uDays:'天',
+ ctaQuoteModel:'詢問此型號價格',ctaPdf:'PDF 規格表',
+ oemTitle:'小量訂單也能打上您的品牌',
+ oemLead:'標準款可印製您的商標，也可由我們的工程團隊依需求客製設計。',
+ step:'步驟',
+ s1t:'詢價',s1p:'告訴我們所需型號、數量及銷售市場，24 小時內回覆。',
+ s2t:'打樣',s2p:'寄送印有您品牌的樣品，確認外觀與包裝。',
+ s3t:'生產',s3p:'廠內生產及品質檢驗，交期 <span class="todo">待補充</span> 天。',
+ s4t:'出貨',s4p:'台灣港口 FOB 貨櫃出貨，附完整出口文件。',
+ coTitle:'四十年不鏽鋼製造經驗',coSince:'1986 年創立',
+ coSinceP:'製造商，提供 OEM 與 ODM 服務。自有工程團隊，可開發標準款及客製設計。',
+ coExport:'外銷市場',
+ coMarkets:'<span class="tag">多明尼加</span><span class="tag">巴拿馬</span><span class="tag">巴拉圭</span><span class="tag">美國</span><span class="tag">香港</span><span class="tag">泰國</span>',
+ coCert:'認證',coCertP:'D-U-N-S® · 台灣經貿網 e-Portal 廠商 · <span class="todo">補上瓦斯器具標準、CE、ISO</span>',
+ ctTitle:'歡迎詢價，我們以中文、英文及西班牙文回覆',ctChat:'LINE／WhatsApp',ctWrite:'傳訊息',ctMail:'電子郵件',ctStore:'前往商店',ctHours:'營業時間',ctHoursV:'週一至週五 9:00–18:00（台灣時間 GMT+8）',
+ fName:'姓名',fCompany:'公司',fCountry:'國家',fQty:'預估數量',fProduct:'詢問產品',fMsg:'留言',fSend:'送出詢價',
+ fOptions:'<option>家用排油煙機</option><option>營業用排油煙機</option><option>瓦斯爐</option><option>熱水器</option><option>OEM 自有品牌</option>',
+ fDemo:'示範表單：正式網站上，此詢價會寄至業務信箱。',
+ foot1:'TING JIN KITCHENWARE CO., LTD. · 台灣 · 1986 年創立',foot2:'改版提案樣稿，2026'
+}};
+const I='https://img.itaiwantrade.com/', S='https://tingjin.es.taiwantrade.com/product/';
 const P=[
- {m:'TJ-82124',n:'Campana combinada acero inox 430 – 124/190 cm',s:'1240 × 820 × 500 mm',c:['campana'],img:'https://img.itaiwantrade.com/ca6f90a3-ca14-470f-ae4e-af7b75d6f86a/0908-2.webp?d=480x480',link:'#ficha'},
- {m:'',n:'Sistema de ventilación profesional de pared 192 cm',s:'Para cocinas profesionales',c:['campana','industrial'],img:'https://img.itaiwantrade.com/5e0fe03f-5352-41b9-b9d8-7084631e8213/192123-C.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/sistema-de-ventilaci%C3%B3n-profesional-para-campana-extractora-de-cocina-de-pared-de-192-cm-3358645.html',t:'Destacado'},
- {m:'TJ-R82190A',n:'Campana extractora industrial 190 cm',s:'Acero inoxidable',c:['campana','industrial'],img:'https://img.itaiwantrade.com/ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-industrial-2827460.html'},
- {m:'F102-1Q',n:'Campana extractora industrial compacta',s:'605 × 670 × 800/950 mm',c:['campana','industrial'],img:'https://img.itaiwantrade.com/7bf97251-16eb-4405-a554-c2c7c438fe5c/m01B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-industrial-2827461.html'},
- {m:'TJ-R1250T',n:'Campana extractora industrial 125 cm',s:'Acero inoxidable',c:['campana','industrial'],img:'https://img.itaiwantrade.com/19865c60-8a6a-4cfe-a065-d5b0205ca177/12501250T.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-industrial-2827364.html'},
- {m:'',n:'Campana de pared 90 cm con luz LED',s:'900 × 457 mm · todo acero inox',c:['campana'],img:'https://img.itaiwantrade.com/3523c62d-5830-4feb-989f-2baba811b296/m28-3.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-1860134.html'},
- {m:'TJ-R9TTB',n:'Campana extractora de pared',s:'Acero inoxidable',c:['campana'],img:'https://img.itaiwantrade.com/89792fbe-25db-4947-9f31-1a67d133c28d/829TTB-N-1.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-2827381.html'},
- {m:'',n:'Campana extractora de pared',s:'Acero inoxidable',c:['campana'],img:'https://img.itaiwantrade.com/8a0463a0-efcd-4c6d-916e-ef742cb48f81/03-12B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/campana-extractora-2827459.html'},
- {m:'',n:'Estufa de gas empotrable',s:'Acero inoxidable',c:['estufa'],img:'https://img.itaiwantrade.com/3acd615e-7e56-4fcd-8b49-a055e0a80704/0315-B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/estufa-2843800.html'},
- {m:'',n:'Estufa de gas de sobremesa',s:'Acero inoxidable',c:['estufa'],img:'https://img.itaiwantrade.com/ac8e665e-f927-49e4-b5d1-4cb1e00279b2/108A-1.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/estufa-2833602.html'},
- {m:'',n:'Calentador de agua a gas 13 L',s:'Tiro forzado',c:['calentador'],img:'https://img.itaiwantrade.com/b8eb7b0e-eba9-499c-b484-0daff551543d/13LB-2.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/calentador-de-agua-2827356.html'},
- {m:'',n:'Calentador de agua a gas 12 L',s:'Tiro forzado',c:['calentador'],img:'https://img.itaiwantrade.com/42d66541-b836-4e99-9cad-cc8ed3d6c0c5/12L-1-B.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/calentador-de-agua-2827363.html'},
- {m:'',n:'Ventilador de pie industrial',s:'Metálico, de alto caudal',c:['industrial'],img:'https://img.itaiwantrade.com/9ee125bc-ca35-413e-88d2-089783db3c12/12-01BB.webp?d=480x480',link:'https://tingjin.es.taiwantrade.com/product/ventilador-2828236.html'}
+ {m:'TJ-82124',n:{es:'Campana combinada acero inox 430 – 124/190 cm',en:'Combination hood, 430 stainless – 124/190 cm',zh:'430 不鏽鋼組合式排油煙機 124／190 公分'},s:{es:'1240 × 820 × 500 mm',en:'1240 × 820 × 500 mm',zh:'1240 × 820 × 500 mm'},c:['campana'],img:'ca6f90a3-ca14-470f-ae4e-af7b75d6f86a/0908-2',link:'#ficha'},
+ {m:'',n:{es:'Sistema de ventilación profesional de pared 192 cm',en:'Professional wall ventilation system, 192 cm',zh:'192 公分壁掛式專業排煙系統'},s:{es:'Para cocinas profesionales',en:'For commercial kitchens',zh:'商業廚房適用'},c:['campana','industrial'],img:'5e0fe03f-5352-41b9-b9d8-7084631e8213/192123-C',link:S+'sistema-de-ventilaci%C3%B3n-profesional-para-campana-extractora-de-cocina-de-pared-de-192-cm-3358645.html',t:1},
+ {m:'TJ-R82190A',n:{es:'Campana extractora industrial 190 cm',en:'Commercial range hood, 190 cm',zh:'190 公分營業用排油煙機'},s:{es:'Acero inoxidable',en:'Stainless steel',zh:'不鏽鋼'},c:['campana','industrial'],img:'ac887dcb-1234-43c5-8c45-9432b70d0cc0/82190OKB',link:S+'campana-extractora-industrial-2827460.html'},
+ {m:'F102-1Q',n:{es:'Campana extractora industrial compacta',en:'Compact commercial range hood',zh:'小型營業用排油煙機'},s:{es:'605 × 670 × 800/950 mm',en:'605 × 670 × 800/950 mm',zh:'605 × 670 × 800/950 mm'},c:['campana','industrial'],img:'7bf97251-16eb-4405-a554-c2c7c438fe5c/m01B',link:S+'campana-extractora-industrial-2827461.html'},
+ {m:'TJ-R1250T',n:{es:'Campana extractora industrial 125 cm',en:'Commercial range hood, 125 cm',zh:'125 公分營業用排油煙機'},s:{es:'Acero inoxidable',en:'Stainless steel',zh:'不鏽鋼'},c:['campana','industrial'],img:'19865c60-8a6a-4cfe-a065-d5b0205ca177/12501250T',link:S+'campana-extractora-industrial-2827364.html'},
+ {m:'',n:{es:'Campana de pared 90 cm con luz LED',en:'90 cm wall hood with LED lighting',zh:'90 公分壁掛式排油煙機（LED 照明）'},s:{es:'900 × 457 mm · todo acero inox',en:'900 × 457 mm · all stainless',zh:'900 × 457 mm · 全不鏽鋼'},c:['campana'],img:'3523c62d-5830-4feb-989f-2baba811b296/m28-3',link:S+'campana-extractora-1860134.html'},
+ {m:'TJ-R9TTB',n:{es:'Campana extractora de pared',en:'Wall-mounted range hood',zh:'壁掛式排油煙機'},s:{es:'Acero inoxidable',en:'Stainless steel',zh:'不鏽鋼'},c:['campana'],img:'89792fbe-25db-4947-9f31-1a67d133c28d/829TTB-N-1',link:S+'campana-extractora-2827381.html'},
+ {m:'',n:{es:'Campana extractora de pared',en:'Wall-mounted range hood',zh:'壁掛式排油煙機'},s:{es:'Acero inoxidable',en:'Stainless steel',zh:'不鏽鋼'},c:['campana'],img:'8a0463a0-efcd-4c6d-916e-ef742cb48f81/03-12B',link:S+'campana-extractora-2827459.html'},
+ {m:'',n:{es:'Estufa de gas empotrable',en:'Built-in gas stove',zh:'崁入式瓦斯爐'},s:{es:'Acero inoxidable',en:'Stainless steel',zh:'不鏽鋼'},c:['estufa'],img:'3acd615e-7e56-4fcd-8b49-a055e0a80704/0315-B',link:S+'estufa-2843800.html'},
+ {m:'',n:{es:'Estufa de gas de sobremesa',en:'Tabletop gas stove',zh:'檯面式瓦斯爐'},s:{es:'Acero inoxidable',en:'Stainless steel',zh:'不鏽鋼'},c:['estufa'],img:'ac8e665e-f927-49e4-b5d1-4cb1e00279b2/108A-1',link:S+'estufa-2833602.html'},
+ {m:'',n:{es:'Calentador de agua a gas 13 L',en:'Gas water heater, 13 L',zh:'13 公升瓦斯熱水器'},s:{es:'Tiro forzado',en:'Forced exhaust',zh:'強制排氣'},c:['calentador'],img:'b8eb7b0e-eba9-499c-b484-0daff551543d/13LB-2',link:S+'calentador-de-agua-2827356.html'},
+ {m:'',n:{es:'Calentador de agua a gas 12 L',en:'Gas water heater, 12 L',zh:'12 公升瓦斯熱水器'},s:{es:'Tiro forzado',en:'Forced exhaust',zh:'強制排氣'},c:['calentador'],img:'42d66541-b836-4e99-9cad-cc8ed3d6c0c5/12L-1-B',link:S+'calentador-de-agua-2827363.html'},
+ {m:'',n:{es:'Ventilador de pie industrial',en:'Industrial pedestal fan',zh:'工業用立扇'},s:{es:'Metálico, de alto caudal',en:'All-metal, high airflow',zh:'金屬材質，大風量'},c:['industrial'],img:'9ee125bc-ca35-413e-88d2-089783db3c12/12-01BB',link:S+'ventilador-2828236.html'}
 ];
+const HTML_LANG={es:'es',en:'en',zh:'zh-Hant-TW'};
+let lang='es', filter='all';
 const grid=document.getElementById('grid');
-function render(f){
-  grid.innerHTML=P.filter(p=>f==='all'||p.c.includes(f)).map(p=>`
-   <article class="card"><div class="ph"><img src="${p.img}" alt="${p.n}" loading="lazy" width="480" height="480"></div><div class="body">
-    ${p.t?`<span class="tag">${p.t}</span>`:''}
-    <span class="model">${p.m||'Modelo por confirmar'}</span><h3>${p.n}</h3><span class="spec">${p.s}</span>
-    <a class="more" href="${p.link}"${p.link.startsWith('#')?'':' target="_blank" rel="noopener"'}>${p.link.startsWith('#')?'Ver ficha de ejemplo':'Ver en Taiwantrade'} →</a>
-   </div></article>`).join('');
+function render(){
+  const t=T[lang];
+  grid.innerHTML=P.filter(p=>filter==='all'||p.c.includes(filter)).map(p=>{
+    const own=p.link.startsWith('#');
+    return `<article class="card"><div class="ph"><img src="${I}${p.img}.webp?d=480x480" alt="${p.n[lang]}" loading="lazy" width="480" height="480"></div><div class="body">
+    ${p.t?`<span class="tag">${t.featured}</span>`:''}
+    <span class="model">${p.m?t.model+' '+p.m:t.noModel}</span><h3>${p.n[lang]}</h3><span class="spec">${p.s[lang]}</span>
+    <a class="more" href="${p.link}"${own?'':' target="_blank" rel="noopener"'}>${own?t.seeSheet:t.seeStore} →</a>
+   </div></article>`}).join('');
 }
-render('all');
+function setLang(l){
+  if(!T[l]) l='es';
+  lang=l;
+  const t=T[l];
+  document.documentElement.lang=HTML_LANG[l];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=t[el.dataset.i18n]; if(v!==undefined) el.innerHTML=v;});
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{el.alt=t[el.dataset.i18nAlt]||'';});
+  document.querySelectorAll('.steps li').forEach(li=>li.dataset.label=t.step+' '+li.dataset.step);
+  document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
+  document.title='Ting Jin Kitchenware – '+(l==='zh'?'改版樣稿':l==='en'?'Mockup':'Maqueta');
+  try{localStorage.setItem('tj-lang',l)}catch(e){}
+  render();
+}
+let start='es';
+try{start=localStorage.getItem('tj-lang')||''}catch(e){start=''}
+if(!start){const q=new URLSearchParams(location.search).get('lang');const n=(navigator.language||'').toLowerCase();start=q||(n.startsWith('zh')?'zh':n.startsWith('es')?'es':n?'en':'es');}
+const q=new URLSearchParams(location.search).get('lang'); if(q&&T[q]) start=q;
+setLang(start);
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  render(b.dataset.f);
+  filter=b.dataset.f; render();
 }));
 document.getElementById('quote').addEventListener('submit',e=>{e.preventDefault();document.getElementById('q-out').hidden=false;});
 </script>

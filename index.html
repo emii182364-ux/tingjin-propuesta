@@ -167,6 +167,17 @@ footer a{color:inherit}
 :lang(zh-Hant-TW) h1,:lang(zh-Hant-TW) h2,:lang(zh-Hant-TW) h3{font-stretch:100%;line-height:1.25;letter-spacing:.02em}
 :lang(zh-Hant-TW) .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
 :lang(zh-Hant-TW) body{line-height:1.8}
+/* pestaña lateral de propuesta */
+.prop-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:30;writing-mode:vertical-rl;background:var(--flame);color:#fff;border:0;border-radius:8px 0 0 8px;padding:16px 10px;font:600 .9rem/1.2 var(--body);letter-spacing:.04em;cursor:pointer;box-shadow:-4px 4px 16px rgb(0 0 0 / .18)}
+.prop-tab:hover{padding-right:14px}
+.prop-panel{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(420px,100%);background:var(--surface);color:var(--ink);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgb(0 0 0 / .25);padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(100%);transition:transform .25s ease;display:grid;align-content:start;gap:14px}
+.prop-panel.open{transform:none}
+.prop-panel .by{font:500 .8rem var(--mono);color:var(--flame);letter-spacing:.06em;text-transform:uppercase}
+.prop-panel h2{font-size:1.8rem}
+.prop-panel .close{justify-self:end;background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 12px;font:inherit;cursor:pointer}
+.prop-slot{border:2px dashed var(--line);border-radius:10px;padding:20px;color:var(--muted);font-size:.95rem}
+.prop-scrim{position:fixed;inset:0;z-index:35;background:rgb(0 0 0 / .35)}
+@media (max-width:760px){.prop-tab{top:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:none;font-size:.8rem;padding:12px 8px}}
 .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 20px rgb(0 0 0 / .2);border-radius:999px;padding:13px 18px}
 </style>
 </head>
@@ -363,9 +374,20 @@ footer a{color:inherit}
 
 <a class="btn btn-wa wa-float" href="#contacto" data-i18n="ctChat"></a>
 
+<button class="prop-tab" type="button" id="prop-open" aria-controls="prop-panel" aria-expanded="false" data-i18n="propTab"></button>
+<div class="prop-scrim" id="prop-scrim" hidden></div>
+<aside class="prop-panel" id="prop-panel" aria-labelledby="prop-title" aria-hidden="true">
+  <button class="close" type="button" id="prop-close" data-i18n="propClose"></button>
+  <span class="by">Emi 李亞諾</span>
+  <h2 id="prop-title" data-i18n="propTitle"></h2>
+  <!-- PROPUESTA: sustituir el contenido de .prop-slot por el texto de la propuesta -->
+  <div class="prop-slot" data-i18n="propSlot"></div>
+</aside>
+
 <script>
 const T={
 es:{
+ propTab:'Propuesta de Emi 李亞諾',propTitle:'Propuesta de mejora',propClose:'Cerrar',propSlot:'Aquí irá la propuesta de Emi para Ting Jin Kitchenware.',
  hero1:'Imagen ilustrativa (Rizky Nuriman / Unsplash). Sustituir por una foto de su fábrica.',hero1alt:'Soldadura TIG de lámina de acero inoxidable',hero2:'Campana de pared 90 cm · LED',hero3:'Estufa de gas empotrable',
  notice:'Maqueta de propuesta para Ting Jin Kitchenware. No es el sitio oficial. Las fotos son las de su tienda actual en Taiwantrade. Los datos marcados en amarillo los debe completar la empresa.',
  brandSub:'KITCHENWARE · DESDE 1986',
@@ -412,6 +434,7 @@ es:{
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwán · desde 1986',foot2:'Maqueta de propuesta, 2026'
 },
 en:{
+ propTab:'Proposal by Emi 李亞諾',propTitle:'Improvement proposal',propClose:'Close',propSlot:'Emi’s proposal for Ting Jin Kitchenware will go here.',
  hero1:'Illustrative photo (Rizky Nuriman / Unsplash). Replace with a photo of your factory.',hero1alt:'TIG welding of stainless steel sheet',hero2:'90 cm wall hood · LED',hero3:'Built-in gas stove',
  notice:'Proposal mockup for Ting Jin Kitchenware. This is not the official website. Photos come from the current Taiwantrade store. Items highlighted in yellow must be filled in by the company.',
  brandSub:'KITCHENWARE · SINCE 1986',
@@ -458,6 +481,7 @@ en:{
  foot1:'TING JIN KITCHENWARE CO., LTD. · Taiwan · since 1986',foot2:'Proposal mockup, 2026'
 },
 zh:{
+ propTab:'李亞諾 Emi 提案',propTitle:'改版提案',propClose:'關閉',propSlot:'此處將放上李亞諾（Emi）為 Ting Jin Kitchenware 準備的提案內容。',
  hero1:'示意圖片（Rizky Nuriman / Unsplash），建議換成貴公司工廠實景照片。',hero1alt:'不鏽鋼板 TIG 焊接',hero2:'90 公分壁掛式排油煙機 · LED',hero3:'崁入式瓦斯爐',
  notice:'此為 Ting Jin Kitchenware 網站改版提案樣稿，並非官方網站。圖片取自目前的台灣經貿網商店，黃色標示處需由貴公司補充資料。',
  brandSub:'KITCHENWARE · 1986 年創立',
@@ -556,6 +580,12 @@ document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
   filter=b.dataset.f; render();
 }));
 document.getElementById('quote').addEventListener('submit',e=>{e.preventDefault();document.getElementById('q-out').hidden=false;});
+const pp=document.getElementById('prop-panel'),po=document.getElementById('prop-open'),ps=document.getElementById('prop-scrim');
+function prop(open){pp.classList.toggle('open',open);pp.setAttribute('aria-hidden',!open);po.setAttribute('aria-expanded',open);ps.hidden=!open;if(open)document.getElementById('prop-close').focus();else po.focus();}
+po.addEventListener('click',()=>prop(true));
+document.getElementById('prop-close').addEventListener('click',()=>prop(false));
+ps.addEventListener('click',()=>prop(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pp.classList.contains('open'))prop(false);});
 </script>
 </body>
 </html>
